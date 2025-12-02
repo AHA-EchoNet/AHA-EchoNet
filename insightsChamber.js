@@ -823,6 +823,171 @@
     return result;
   }
 
+  // ── Narrativ analysemotor V1 ─────────────────
+
+  function createNarrativeForTopic(chamber, subjectId, themeId) {
+    const insights = getInsightsForTopic(chamber, subjectId, themeId);
+    if (!insights || insights.length === 0) {
+      return "Ingen narrativ innsikt ennå – skriv noen setninger først.";
+    }
+
+    const stats = computeTopicStats(chamber, subjectId, themeId);
+    const sem = computeSemanticCounts(insights);
+    const dims = computeDimensionsSummary(insights);
+    const total = insights.length || 1;
+
+    const lines = [];
+
+    // 1) Åpning / hovedtema
+    lines.push(`Narrativ innsikt for tema «${themeId}»:`);
+    lines.push("");
+
+    // Hovedfarge ut fra dimensjoner
+    const dimLabels = [];
+    if (dims.emosjon > 0) dimLabels.push("følelser");
+    if (dims.atferd > 0) dimLabels.push("konkrete handlinger");
+    if (dims.tanke > 0) dimLabels.push("tanker og tolkninger");
+    if (dims.kropp > 0) dimLabels.push("kroppslige reaksjoner");
+    if (dims.relasjon > 0) dimLabels.push("relasjoner til andre");
+
+    if (dimLabels.length > 0) {
+      lines.push(
+        "Du beskriver dette temaet først og fremst gjennom " +
+        dimLabels.join(", ") +
+        "."
+      );
+    } else {
+      lines.push(
+        "Du beskriver dette temaet mest gjennom generelle tanker og observasjoner."
+      );
+    }
+
+    // 2) Typisk mønster (frekvens + valens)
+    const freqOfteAlltid = sem.frequency.ofte + sem.frequency.alltid;
+    const neg = sem.valence.negativ;
+    const pos = sem.valence.positiv;
+
+    if (freqOfteAlltid > 0) {
+      const andel = Math.round((freqOfteAlltid / total) * 100);
+      lines.push(
+        `${andel}% av innsiktene dine handler om noe som skjer «ofte» eller «alltid». ` +
+        "Det tyder på at dette oppleves som et stabilt mønster hos deg."
+      );
+    } else {
+      lines.push(
+        "Det du beskriver høres mer ut som enkeltsituasjoner enn et veldig stabilt mønster."
+      );
+    }
+
+    if (neg > 0 || pos > 0) {
+      const andelNeg = Math.round((neg / total) * 100);
+      const andelPos = Math.round((pos / total) * 100);
+
+      if (neg > 0 && pos === 0) {
+        lines.push(
+          `${andelNeg}% av innsiktene har en tydelig negativ farge – stress, ubehag eller vanskelige følelser dominerer.`
+        );
+      } else if (pos > 0 && neg === 0) {
+        lines.push(
+          `${andelPos}% av innsiktene har en positiv farge – det er mye ressurs og mestring i dette temaet.`
+        );
+      } else {
+        lines.push(
+          `${andelNeg}% av innsiktene er preget av det som er vanskelig, ` +
+          `mens ${andelPos}% peker mot noe som faktisk fungerer eller gir energi.`
+        );
+      }
+    }
+
+    // 3) Indre logikk: krav / hindring / meta / absolutter
+    const krav = sem.modality.krav;
+    const hindring = sem.modality.hindring;
+    const meta = sem.meta.meta + sem.meta.usikker;
+    const kontrast = sem.contrast_count;
+    const absolutt = sem.absolute_count;
+
+    if (krav + hindring > 0) {
+      lines.push(
+        "Språket ditt inneholder en del «må/burde/skal» eller «klarer ikke/får ikke til» – " +
+        "det tyder på både indre krav og opplevelse av å stå fast."
+      );
+    }
+
+    if (meta > 0) {
+      lines.push(
+        "Du bruker også metaspråk som «egentlig», «kanskje» eller «føles som», " +
+        "som viser at du prøver å forstå mønsteret ditt litt utenfra."
+      );
+    }
+
+    if (kontrast > 0 || absolutt > 0) {
+      const biter = [];
+      if (kontrast > 0) {
+        biter.push("kontraster som «men», «samtidig» eller «likevel»");
+      }
+      if (absolutt > 0) {
+        biter.push("absoluttspråk som «alltid», «aldri» eller «ingen»");
+      }
+      lines.push(
+        "Motoren finner også " +
+        biter.join(" og ") +
+        ", som ofte henger sammen med sterke følelser og litt svart–hvitt-tenkning."
+      );
+    }
+
+    // 4) Representativ situasjon (plukker én eller to setninger)
+    let repNeg = null;
+    let repPos = null;
+
+    insights.forEach((ins) => {
+      const sem = ins.semantic || {};
+      if (!repNeg && (sem.valence === "negativ" || sem.valence === "blandet")) {
+        repNeg = ins.summary;
+      }
+      if (!repPos && sem.valence === "positiv") {
+        repPos = ins.summary;
+      }
+    });
+
+    if (repNeg) {
+      lines.push("");
+      lines.push("Et eksempel på hvordan dette kan høres ut hos deg:");
+      lines.push(`«${repNeg}»`);
+    }
+
+    if (repPos) {
+      lines.push("");
+      lines.push("Samtidig finnes det også spor av noe som fungerer bedre:");
+      lines.push(`«${repPos}»`);
+    }
+
+    // 5) Retning / neste kapittel basert på stats
+    lines.push("");
+    lines.push(
+      `Metningsgrad ${stats.insight_saturation}/100 og begrepstetthet ${stats.concept_density}/100 ` +
+      `tilsier at dette temaet nå egner seg som «${stats.artifact_type}».`
+    );
+
+    if (stats.insight_saturation < 30) {
+      lines.push(
+        "Narrativt sett er du fortsatt i en utforskningsfase: du samler bruddstykker, " +
+        "og neste steg er å beskrive flere konkrete situasjoner."
+      );
+    } else if (stats.insight_saturation < 60) {
+      lines.push(
+        "Narrativt sett begynner det å tegne seg et mønster. Neste steg er å samle trådene i en liten «sti» " +
+        "eller liste over hvordan dette typisk starter, hva du gjør, og hva som skjer etterpå."
+      );
+    } else {
+      lines.push(
+        "Narrativt sett er dette et ganske modent tema hos deg. Du kunne skrevet en kort tekst eller artikkel " +
+        "om hva du har lært her, og hvilke prinsipper du vil ta med deg videre."
+      );
+    }
+
+    return lines.join("\n");
+  }
+  
   // ── Public API ─────────────────────────────
 
   const InsightsEngine = {
@@ -838,7 +1003,8 @@
     createPathSteps,
     createSynthesisText,
     createArticleDraft,
-    computeTopicsOverview
+    computeTopicsOverview,
+    createNarrativeForTopic
   };
 
   if (typeof module !== "undefined" && module.exports) {
