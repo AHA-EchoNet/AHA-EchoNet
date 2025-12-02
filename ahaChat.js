@@ -709,6 +709,7 @@ function setupUI() {
   const btnTopics = document.getElementById("btn-topics");
   const btnExport = document.getElementById("btn-export");
   const btnReset = document.getElementById("btn-reset");
+  const btnNarr = document.getElementById("btn-narrative");
 
   btnSend.addEventListener("click", () => {
     const val = (txt.value || "").trim();
@@ -738,6 +739,7 @@ function setupUI() {
   btnDial.addEventListener("click", showDialecticViewForCurrentTopic);
   btnTopics.addEventListener("click", showAllTopicsOverview);
   btnExport.addEventListener("click", exportChamberJson);
+    btnNarr.addEventListener("click", showNarrativeForCurrentTopic);
 
   btnReset.addEventListener("click", () => {
     localStorage.removeItem(STORAGE_KEY);
