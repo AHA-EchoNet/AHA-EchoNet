@@ -80,6 +80,108 @@ function handleUserMessage(messageText) {
   return sentences.length;
 }
 
+function buildTopicSummary(chamber, themeId) {
+  const insights = InsightsEngine.getInsightsForTopic(
+    chamber,
+    SUBJECT_ID,
+    themeId
+  );
+
+  if (insights.length === 0) {
+    return "Ingen innsikter å oppsummere ennå.";
+  }
+
+  const stats = InsightsEngine.computeTopicStats(
+    chamber,
+    SUBJECT_ID,
+    themeId
+  );
+  const sem = InsightsEngine.computeSemanticCounts(insights);
+  const dims = InsightsEngine.computeDimensionsSummary(insights);
+
+  const total = insights.length || 1;
+
+  const lines = [];
+
+  // 1) Overordnet status
+  lines.push(
+    `Dette temaet har ${stats.insight_count} innsikt(er) ` +
+    `(metningsgrad ${stats.insight_saturation}/100, begrepstetthet ${stats.concept_density}/100).`
+  );
+  lines.push(
+    `Motoren mener dette egner seg best som: ${stats.artifact_type}.`
+  );
+
+  // 2) Frekvens / hvor ofte skjer det
+  const freqOfteAlltid = sem.frequency.ofte + sem.frequency.alltid;
+  if (freqOfteAlltid > 0) {
+    const andel = Math.round((freqOfteAlltid / total) * 100);
+    lines.push(
+      `${andel}% av innsiktene beskriver noe som skjer «ofte» eller «alltid» – altså et ganske stabilt mønster.`
+    );
+  }
+
+  // 3) Valens / emosjonell farge
+  const neg = sem.valence.negativ;
+  const pos = sem.valence.positiv;
+  if (neg > 0 || pos > 0) {
+    const andelNeg = Math.round((neg / total) * 100);
+    const andelPos = Math.round((pos / total) * 100);
+
+    if (neg > 0 && pos === 0) {
+      lines.push(
+        `${andelNeg}% av innsiktene har negativ valens (stress, ubehag, vanskelige følelser).`
+      );
+    } else if (pos > 0 && neg === 0) {
+      lines.push(
+        `${andelPos}% av innsiktene har positiv valens – det er en del ressurser og lyspunkter her.`
+      );
+    } else {
+      lines.push(
+        `${andelNeg}% av innsiktene er negative og ${andelPos}% er positive – temaet rommer både vanskelige ting og ressurser.`
+      );
+    }
+  }
+
+  // 4) Krav / hindring
+  const krav = sem.modality.krav;
+  const hindring = sem.modality.hindring;
+  if (krav + hindring > 0) {
+    lines.push(
+      `Mange setninger inneholder enten «må/burde/skal» eller «klarer ikke/får ikke til», ` +
+      `som tyder på både indre krav og opplevd hindring i dette temaet.`
+    );
+  }
+
+  // 5) Dimensjoner: hva handler det mest om?
+  const dimLabels = [];
+  if (dims.emosjon > 0) dimLabels.push("følelser (emosjon)");
+  if (dims.atferd > 0) dimLabels.push("konkret atferd/handling");
+  if (dims.tanke > 0) dimLabels.push("tanker og tolkninger");
+  if (dims.kropp > 0) dimLabels.push("kroppslige reaksjoner");
+  if (dims.relasjon > 0) dimLabels.push("relasjoner til andre");
+
+  if (dimLabels.length > 0) {
+    lines.push(
+      "Innsiktene handler særlig om: " + dimLabels.join(", ") + "."
+    );
+  }
+
+  // 6) Konklusjon / meta-insikt
+  if (freqOfteAlltid > 0 && neg > 0) {
+    lines.push(
+      "Samlet sett beskriver du et mønster som både skjer ofte og oppleves som krevende – " +
+      "altså et område hvor det kan være mye å hente på å utforske videre."
+    );
+  } else if (freqOfteAlltid > 0 && pos > 0 && neg === 0) {
+    lines.push(
+      "Samlet sett ser dette ut som et område der du har flere gode spor som gjentar seg ofte."
+    );
+  }
+
+  return lines.join("\n");
+}
+
 function showInsightsForCurrentTopic() {
   const chamber = loadChamberFromStorage();
   const themeId = getCurrentThemeId();
@@ -101,17 +203,22 @@ function showInsightsForCurrentTopic() {
     const sem = ins.semantic || {};
     log(
       (idx + 1) +
-        ". " +
-        ins.title +
-        " (score: " +
-        ins.strength.total_score +
-        ", freq: " +
-        (sem.frequency || "ukjent") +
-        ", valens: " +
-        (sem.valence || "nøytral") +
-        ")"
+      ". " +
+      ins.title +
+      " (score: " +
+      ins.strength.total_score +
+      ", freq: " +
+      (sem.frequency || "ukjent") +
+      ", valens: " +
+      (sem.valence || "nøytral") +
+      ")"
     );
   });
+
+  log("");
+  log("── Meta-sammendrag for temaet ──");
+  const summary = buildTopicSummary(chamber, themeId);
+  log(summary);
 }
 
 function showTopicStatus() {
