@@ -1321,6 +1321,8 @@ function setupUI() {
   const btnReset = document.getElementById("btn-reset");
   const btnNarr = document.getElementById("btn-narrative");
   const btnMeta = document.getElementById("btn-meta");
+  const btnAI = document.getElementById("btn-ai"); // NY
+  // ...
 
   btnSend.addEventListener("click", () => {
     const val = (txt.value || "").trim();
@@ -1339,7 +1341,7 @@ function setupUI() {
     txt.value = "";
   });
 
-  btnInsights.addEventListener("click", showInsightsForCurrentTopic);
+    btnInsights.addEventListener("click", showInsightsForCurrentTopic);
   btnStatus.addEventListener("click", showTopicStatus);
   btnSynth.addEventListener("click", showSynthesisForCurrentTopic);
   btnPath.addEventListener("click", showPathForCurrentTopic);
@@ -1351,8 +1353,12 @@ function setupUI() {
   btnTopics.addEventListener("click", showAllTopicsOverview);
   btnExport.addEventListener("click", exportChamberJson);
   btnNarr.addEventListener("click", showNarrativeForCurrentTopic);
+
   if (btnMeta) {
     btnMeta.addEventListener("click", showMetaProfileForUser);
+  }
+  if (btnAI) {
+    btnAI.addEventListener("click", callAHAAgentForCurrentTopic);
   }
 
   btnReset.addEventListener("click", () => {
@@ -1365,7 +1371,8 @@ function setupUI() {
   clearOutput();
   clearPanel();
   log(
-    "AHA Chat – Innsiktsmotor V1 + Metamotor klar. Velg tema-id, skriv en tanke og trykk «Send»."
+    "AHA Chat – Innsiktsmotor V1 + Metamotor + AHA-AI klar. " +
+      "Velg tema-id, skriv en tanke og trykk «Send»."
   );
 }
 
