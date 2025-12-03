@@ -1156,6 +1156,151 @@ function exportChamberJson() {
   log(JSON.stringify(chamber, null, 2));
 }
 
+
+// ── Bygg state-pakke til AHA-AI for ett tema ─────────────
+
+function buildAIStateForTheme(themeId) {
+  const chamber = loadChamberFromStorage();
+
+  const insights = InsightsEngine.getInsightsForTopic(
+    chamber,
+    SUBJECT_ID,
+    themeId
+  );
+  const stats = InsightsEngine.computeTopicStats(
+    chamber,
+    SUBJECT_ID,
+    themeId
+  );
+  const sem = InsightsEngine.computeSemanticCounts(insights);
+  const dims = InsightsEngine.computeDimensionsSummary(insights);
+  const narrative = InsightsEngine.createNarrativeForTopic(
+    chamber,
+    SUBJECT_ID,
+    themeId
+  );
+
+  // Meta-profil på tvers av tema – hvis meta-motoren er lastet
+  let metaProfile = null;
+  if (typeof MetaInsightsEngine !== "undefined") {
+    try {
+      metaProfile = MetaInsightsEngine.buildUserMetaProfile(
+        chamber,
+        SUBJECT_ID
+      );
+    } catch (e) {
+      console.warn("MetaInsightsEngine feilet:", e);
+    }
+  }
+
+  // Ta med topp 5 innsikter sortert på styrke
+  const topInsights = (insights || [])
+    .slice()
+    .sort(
+      (a, b) =>
+        (b.strength?.total_score || 0) -
+        (a.strength?.total_score || 0)
+    )
+    .slice(0, 5);
+
+  return {
+    user_id: SUBJECT_ID,
+    theme_id: themeId,
+    topic_stats: stats,
+    topic_semantics: sem,
+    topic_dimensions: dims,
+    topic_narrative: narrative,
+    top_insights: topInsights,
+    meta_profile: metaProfile,
+  };
+}
+
+// ── Vis svar fra AHA-AI i loggen ───────────────
+
+function renderAHAAgentResponse(res) {
+  clearOutput();
+
+  if (!res) {
+    log("AHA-AI: Fikk ikke noe svar.");
+    return;
+  }
+
+  log("AHA-AI for tema " + (res.theme_id || getCurrentThemeId()) + ":");
+  log("");
+
+  if (res.summary) {
+    log("SAMMENDRAG:");
+    log(res.summary);
+    log("");
+  }
+
+  if (Array.isArray(res.what_i_see) && res.what_i_see.length > 0) {
+    log("DET JEG SER:");
+    res.what_i_see.forEach((line, idx) => {
+      log("  " + (idx + 1) + ". " + line);
+    });
+    log("");
+  }
+
+  if (Array.isArray(res.next_steps) && res.next_steps.length > 0) {
+    log("NESTE STEG:");
+    res.next_steps.forEach((line, idx) => {
+      log("  " + (idx + 1) + ". " + line);
+    });
+    log("");
+  }
+
+  if (res.one_question) {
+    log("SPØRSMÅL TIL DEG:");
+    log(res.one_question);
+    log("");
+  }
+
+  if (res.tone) {
+    log("(Tone: " + res.tone + ")");
+  }
+}
+
+
+// ── Kall AHA-AI for gjeldende tema ───────────────────────
+
+async function callAHAAgentForCurrentTopic() {
+  const themeId = getCurrentThemeId();
+  const state = buildAIStateForTheme(themeId);
+
+  clearOutput();
+  log("AHA-AI: Leser innsiktskammeret for tema " + themeId + " …");
+  log("");
+
+  // Din Codespaces-backend:
+  const API_BASE =
+    "https://fluffy-funicular-g4vqgqx4jgj93vrqp-3001.app.github.dev";
+
+  try {
+    const res = await fetch(API_BASE + "/api/aha-agent", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(state),
+    });
+
+    if (!res.ok) {
+      throw new Error("HTTP " + res.status + " " + res.statusText);
+    }
+
+    const data = await res.json();
+    renderAHAAgentResponse(data);
+  } catch (e) {
+    log("Feil ved kall til AHA-AI: " + e.message);
+    log("");
+    log("DEBUG – state som ble sendt:");
+    log(JSON.stringify(state, null, 2));
+  }
+}
+
+
+
 // ── Meta-motor: global brukerprofil ──────────
 
 function showMetaProfileForUser() {
