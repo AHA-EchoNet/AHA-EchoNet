@@ -283,6 +283,56 @@
       .sort((a, b) => b.total_count - a.total_count);
   }
 
+    function buildSemioticProfile(enrichedInsights) {
+    const summary = {
+      total_insights: 0,
+      body_count: 0,
+      space_count: 0,
+      tech_count: 0,
+      heart_markers: 0,
+      star_markers: 0,
+      arrow_markers: 0,
+      exclamation_markers: 0,
+      emoji_count: 0,
+    };
+
+    for (const ins of enrichedInsights) {
+      if (!ins || !ins.semiotic) continue;
+      summary.total_insights += 1;
+
+      const { domains = {}, markers = {}, emojis = [] } =
+        ins.semiotic;
+
+      if (domains.body) summary.body_count += 1;
+      if (domains.space) summary.space_count += 1;
+      if (domains.tech) summary.tech_count += 1;
+
+      if (markers.heart) summary.heart_markers += 1;
+      if (markers.stars) summary.star_markers += 1;
+      if (markers.arrow) summary.arrow_markers += 1;
+      if (markers.exclamation) summary.exclamation_markers += 1;
+
+      summary.emoji_count += (emojis || []).length;
+    }
+
+    if (summary.total_insights > 0) {
+      summary.body_ratio =
+        summary.body_count / summary.total_insights;
+      summary.space_ratio =
+        summary.space_count / summary.total_insights;
+      summary.tech_ratio =
+        summary.tech_count / summary.total_insights;
+      summary.emoji_per_insight =
+        summary.emoji_count / summary.total_insights;
+    } else {
+      summary.body_ratio = 0;
+      summary.space_ratio = 0;
+      summary.tech_ratio = 0;
+      summary.emoji_per_insight = 0;
+    }
+
+    return summary;
+  }
   
   // ── Hovedfunksjon: bygg meta-profil for en bruker ───────
 
@@ -323,10 +373,13 @@
     // Bygg globalt begrepskart basert på alle berikede innsikter
     const conceptIndex = buildConceptIndex(enrichedInsights);
 
+    const semioticProfile = buildSemioticProfile(enrichedInsights);
+    
     return {
       subject_id: subjectId,
       topics: topicProfiles,
       global: globalProfile,
+      semiotic: semioticProfile,
       patterns,
       insights: enrichedInsights, // innsikter med lifecycle-status
       concepts: conceptIndex,     // 🔹 nytt: global begrepsindeks
