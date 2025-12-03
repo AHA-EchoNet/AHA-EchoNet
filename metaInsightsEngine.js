@@ -239,6 +239,51 @@
     return patterns;
   }
 
+
+
+  function buildConceptIndex(enrichedInsights) {
+    const index = new Map();
+
+    for (const ins of enrichedInsights) {
+      if (!ins || !ins.concepts) continue;
+
+      for (const c of ins.concepts) {
+        if (!c || !c.key) continue;
+        let entry = index.get(c.key);
+        if (!entry) {
+          entry = {
+            key: c.key,
+            total_count: 0,
+            themes: new Set(),
+            examples: new Set(),
+          };
+          index.set(c.key, entry);
+        }
+
+        entry.total_count += c.count || 0;
+        if (ins.theme_id) {
+          entry.themes.add(ins.theme_id);
+        }
+        (c.examples || []).forEach((ex) => {
+          if (entry.examples.size < 10) {
+            entry.examples.add(ex);
+          }
+        });
+      }
+    }
+
+    return Array.from(index.values())
+      .map((e) => ({
+        key: e.key,
+        total_count: e.total_count,
+        theme_count: e.themes.size,
+        themes: Array.from(e.themes),
+        examples: Array.from(e.examples),
+      }))
+      .sort((a, b) => b.total_count - a.total_count);
+  }
+
+  
   // ── Hovedfunksjon: bygg meta-profil for en bruker ───────
 
   function buildUserMetaProfile(chamber, subjectId) {
@@ -265,7 +310,7 @@
       });
     }
 
-    const globalProfile = computeGlobalSemanticProfile(topicProfiles);
+        const globalProfile = computeGlobalSemanticProfile(topicProfiles);
     const patterns = detectCrossTopicPatterns(
       topicProfiles,
       globalProfile
@@ -275,12 +320,16 @@
       subjectId
     );
 
+    // Bygg globalt begrepskart basert på alle berikede innsikter
+    const conceptIndex = buildConceptIndex(enrichedInsights);
+
     return {
       subject_id: subjectId,
       topics: topicProfiles,
       global: globalProfile,
       patterns,
       insights: enrichedInsights, // innsikter med lifecycle-status
+      concepts: conceptIndex,     // 🔹 nytt: global begrepsindeks
     };
   }
 
