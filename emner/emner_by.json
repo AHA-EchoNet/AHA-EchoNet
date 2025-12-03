@@ -1,0 +1,43 @@
+[
+  {
+    "emne_id": "em_by_romlig_orden",
+    "subject_id": "by",
+    "title": "Romlig orden i byen",
+    "short_label": "Romlig orden",
+    "description": "Gater, plasser og linjer som styrer hvordan vi beveger oss og møtes.",
+    "keywords": ["byrom", "akser", "plasser", "gateplan"],
+    "dimensions": ["romlig", "sosial"],
+    "core_concepts": [
+      "aksial struktur",
+      "knutepunkter",
+      "offentlige vs. semi-offentlige rom"
+    ],
+    "blindspots": [
+      "tilgjengelighet for funksjonshemmede",
+      "barns bevegelsesmønstre"
+    ],
+    "related_routes": ["rt_byaksen_01"],
+    "related_places": ["pl_torg_01", "pl_bro_02"],
+    "related_quizzes": ["qz_by_romlig_orden"],
+    "status": "core"
+  },
+  {
+    "emne_id": "em_by_blindsoner_ekskludering",
+    "subject_id": "by",
+    "title": "Blindsoner og ekskludering",
+    "short_label": "Blindsoner",
+    "description": "Hvem har ikke nøkkel til byen? Tomrom, bakgater, privatiserte rom.",
+    "keywords": ["ekskludering", "privatisering", "gentrifisering"],
+    "dimensions": ["sosial", "økonomi"],
+    "core_concepts": [
+      "gated communities",
+      "gentrifisering",
+      "uformelle rom"
+    ],
+    "blindspots": [],
+    "related_routes": ["rt_skyggesider_01"],
+    "related_places": ["pl_bakgate_03"],
+    "related_quizzes": ["qz_by_blindsoner"],
+    "status": "experimental"
+  }
+]
