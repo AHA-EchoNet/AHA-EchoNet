@@ -728,6 +728,81 @@
     );
   }
 
+  // ── Begrepsanalyse per innsikt ─────────────
+
+  function normalizeConceptToken(token) {
+    // Veldig enkel normalisering: små bokstaver, fjern "støy" og noen vanlige endelser
+    let t = token.toLowerCase().replace(/[^a-zæøå0-9]/gi, "");
+    if (t.length <= 3) return "";
+    t = t.replace(/(ene|ene|ene|ene|ene|ene)$/i, "");
+    t = t.replace(/(ene|ene|er|en|et)$/i, "");
+    return t;
+  }
+
+  function extractConcepts(text) {
+    const tokens = filterStopwords(tokenize(text));
+    if (!tokens.length) return [];
+
+    const conceptMap = new Map();
+
+    for (const raw of tokens) {
+      const key = normalizeConceptToken(raw);
+      if (!key || key.length < 3) continue;
+
+      let entry = conceptMap.get(key);
+      if (!entry) {
+        entry = { key, count: 0, examples: [] };
+        conceptMap.set(key, entry);
+      }
+
+      entry.count += 1;
+      if (
+        entry.examples.length < 5 &&
+        !entry.examples.includes(raw)
+      ) {
+        entry.examples.push(raw);
+      }
+    }
+
+    return Array.from(conceptMap.values());
+  }
+
+  function mergeConcepts(existing, incoming) {
+    const map = new Map();
+
+    (existing || []).forEach((c) => {
+      map.set(c.key, {
+        key: c.key,
+        count: c.count || 0,
+        examples: Array.isArray(c.examples)
+          ? [...c.examples]
+          : [],
+      });
+    });
+
+    (incoming || []).forEach((c) => {
+      if (!c || !c.key) return;
+      let current = map.get(c.key);
+      if (!current) {
+        current = { key: c.key, count: 0, examples: [] };
+        map.set(c.key, current);
+      }
+      current.count += c.count || 0;
+      (c.examples || []).forEach((ex) => {
+        if (
+          current.examples.length < 5 &&
+          !current.examples.includes(ex)
+        ) {
+          current.examples.push(ex);
+        }
+      });
+    });
+
+    return Array.from(map.values()).sort(
+      (a, b) => b.count - a.count
+    );
+  }
+  
   function computeConceptDensity(insights) {
     const combined = insights
       .map((ins) => `${ins.title}. ${ins.summary}`)
