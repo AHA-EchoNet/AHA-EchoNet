@@ -1,0 +1,72 @@
+[
+  {
+    "emne_id": "em_pol_makt_institusjoner",
+    "subject_id": "politikk",
+    "title": "Makt og institusjoner i byen",
+    "short_label": "Makt & institusjoner",
+    "description": "Hvordan rådhus, departementer, domstoler og forvaltning former hverdagsliv, ressursfordeling og opplevelsen av hva som er normalt.",
+    "keywords": [
+      "makt",
+      "institusjoner",
+      "forvaltning",
+      "demokrati",
+      "rettferdighet"
+    ],
+    "dimensions": [
+      "politikk",
+      "institusjoner",
+      "hverdagsliv"
+    ],
+    "core_concepts": [
+      "makt",
+      "institusjon",
+      "normalitet",
+      "styring",
+      "fordeling",
+      "legitimitet",
+      "konflikt"
+    ],
+    "blindspots": [
+      "administrativ makt og teknokratisk styring",
+      "strukturell vold og stille utestengelser",
+      "minoritetenes usynliggjøring"
+    ],
+    "related_routes": [],
+    "related_places": [],
+    "related_quizzes": [],
+    "status": "core"
+  },
+  {
+    "emne_id": "em_pol_geografi_sosial_struktur",
+    "subject_id": "politikk",
+    "title": "Samfunnets geografi og sosiale struktur",
+    "short_label": "Samfunnsgeografi",
+    "description": "Hvordan politiske beslutninger fordeler makt, ressurser og institusjoner i byen, og hvordan sentrum–periferi og bydeler preges av dette.",
+    "keywords": [
+      "bydeler",
+      "fordeling",
+      "velferdsstat",
+      "konflikt",
+      "representasjon"
+    ],
+    "dimensions": [
+      "geografi",
+      "fordeling",
+      "sosial struktur"
+    ],
+    "core_concepts": [
+      "fordeling",
+      "styring",
+      "legitimitet",
+      "konflikt"
+    ],
+    "blindspots": [
+      "politiske prosesser som ikke er demokratiske",
+      "normalitet som maktmiddel"
+    ],
+    "related_routes": [],
+    "related_places": [],
+    "related_quizzes": [],
+    "status": "core"
+  }
+]
