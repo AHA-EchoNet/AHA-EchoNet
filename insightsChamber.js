@@ -610,11 +610,12 @@
     };
   }
 
-    function createInsightFromSignal(signal) {
+      function createInsightFromSignal(signal) {
     const title = generateTitleFromText(signal.text);
     const semantic = analyzeSentenceSemantics(signal.text);
     const dimensions = analyzeDimensions(signal.text);
-    const narrative = analyzeNarrative(signal.text); // ⬅ NY LINJE
+    const narrative = analyzeNarrative(signal.text); // ⬅ eksisterende
+    const concepts = extractConcepts(signal.text);   // ⬅ NY LINJE
 
     return {
       id: generateInsightId(),
@@ -624,16 +625,18 @@
       summary: signal.text,
       strength: {
         evidence_count: 1,
-        total_score: 10
+        total_score: 10,
       },
       first_seen: signal.timestamp,
       last_updated: signal.timestamp,
       semantic,
       dimensions,
-      narrative // ⬅ NY LINJE
+      narrative,   // ⬅ behold
+      concepts,    // ⬅ NYTT FELT
     };
   }
 
+  
   function getInsightsForTopic(chamber, subjectId, themeId) {
     return chamber.insights.filter(
       (ins) =>
@@ -642,12 +645,19 @@
     );
   }
 
-  function reinforceInsight(insight, signal) {
+    function reinforceInsight(insight, signal) {
     insight.strength.evidence_count += 1;
     insight.last_updated = signal.timestamp;
     insight.strength.total_score = Math.min(
       100,
       insight.strength.evidence_count * 10
+    );
+
+    // Oppdater begreper basert på den nye teksten
+    const newConcepts = extractConcepts(signal.text);
+    insight.concepts = mergeConcepts(
+      insight.concepts || [],
+      newConcepts
     );
   }
 
