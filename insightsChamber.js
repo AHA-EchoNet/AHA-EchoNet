@@ -746,21 +746,64 @@ function createInsightFromSignal(signal) {
     );
   }
 
-    function reinforceInsight(insight, signal) {
-    insight.strength.evidence_count += 1;
-    insight.last_updated = signal.timestamp;
-    insight.strength.total_score = Math.min(
-      100,
-      insight.strength.evidence_count * 10
-    );
+    function mergeSemiotic(a, b) {
+  if (!a) return b || null;
+  if (!b) return a;
 
-    // Oppdater begreper basert på den nye teksten
-    const newConcepts = extractConcepts(signal.text);
-    insight.concepts = mergeConcepts(
-      insight.concepts || [],
-      newConcepts
-    );
-  }
+  const merged = {
+    emojis: [],
+    markers: { ...(a.markers || {}) },
+    domains: { ...(a.domains || {}) },
+  };
+
+  // Emojis: slå sammen og begrens litt
+  const allEmojis = [...(a.emojis || []), ...(b.emojis || [])];
+  merged.emojis = Array.from(new Set(allEmojis)).slice(0, 20);
+
+  // Markers: OR-logikk
+  Object.keys(merged.markers).forEach((k) => {
+    merged.markers[k] =
+      (a.markers && a.markers[k]) ||
+      (b.markers && b.markers[k]) ||
+      false;
+  });
+
+  // Domains: OR-logikk
+  Object.keys(merged.domains).forEach((k) => {
+    merged.domains[k] =
+      (a.domains && a.domains[k]) ||
+      (b.domains && b.domains[k]) ||
+      false;
+  });
+
+  return merged;
+}
+
+  function reinforceInsight(insight, signal) {
+  insight.strength.evidence_count += 1;
+  insight.last_updated = signal.timestamp;
+
+  // Oppdater begreper basert på den nye teksten
+  const newConcepts = extractConcepts(signal.text);
+  insight.concepts = mergeConcepts(
+    insight.concepts || [],
+    newConcepts
+  );
+
+  // Oppdater semiotikk basert på den nye teksten
+  const newSemiotic = analyzeSemioticSignals(signal.text);
+  insight.semiotic = mergeSemiotic(
+    insight.semiotic || null,
+    newSemiotic
+  );
+
+  // Bruk dybdescoren som "grunnfjell" + evidens
+  const baseDepth = insight.depth_score || 0;
+  insight.strength.total_score = Math.min(
+    100,
+    insight.strength.evidence_count * 10 + baseDepth
+  );
+}
 
     function addSignalToChamber(chamber, signal) {
     const candidates = getInsightsForTopic(
