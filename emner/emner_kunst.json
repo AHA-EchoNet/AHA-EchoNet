@@ -1,0 +1,24 @@
+[
+  {
+    "emne_id": "em_kunst_symbolsk_makt",
+    "subject_id": "kunst",
+    "title": "Kunst og symbolsk makt",
+    "short_label": "Symbolsk makt",
+    "description": "Hvordan kunst brukes til å skape, legitimere eller utfordre makt.",
+    "keywords": ["representasjon", "kanon", "propaganda"],
+    "dimensions": ["politikk", "kultur"],
+    "core_concepts": [
+      "symbolsk kapital",
+      "kanon",
+      "motbilder"
+    ],
+    "blindspots": [
+      "hvem får ikke henge på veggen?",
+      "lokale kunstnere utenfor institusjonene"
+    ],
+    "related_routes": ["rt_kunstmakt_01"],
+    "related_places": ["pl_museum_01"],
+    "related_quizzes": ["qz_kunst_symbolsk_makt"],
+    "status": "core"
+  }
+]
