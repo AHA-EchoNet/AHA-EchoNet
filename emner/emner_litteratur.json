@@ -1,0 +1,72 @@
+[
+  {
+    "emne_id": "em_lit_litteratur_som_verdensforstaelse",
+    "subject_id": "litteratur",
+    "title": "Litteratur som verdensforståelse",
+    "short_label": "Verdensforståelse",
+    "description": "Hvordan fortelling, språk og perspektiv former identitet, etikk, politikk og måter å se verden på.",
+    "keywords": [
+      "fortelling",
+      "språk",
+      "perspektiv",
+      "identitet",
+      "symbolsk makt"
+    ],
+    "dimensions": [
+      "estetikk",
+      "politikk",
+      "identitet"
+    ],
+    "core_concepts": [
+      "fortelling",
+      "språk",
+      "symbolsk makt",
+      "perspektiv",
+      "estetikk",
+      "ambivalens",
+      "tolkning",
+      "kanon"
+    ],
+    "blindspots": [
+      "stemmer som ikke ble publisert",
+      "språk som ble marginalisert",
+      "dagbøker, brev, notater og muntlig tradisjon",
+      "klasse- og kjønnsbias i kulturpolitikk"
+    ],
+    "related_routes": [],
+    "related_places": [],
+    "related_quizzes": [],
+    "status": "core"
+  },
+  {
+    "emne_id": "em_lit_litteraer_geografi_oslo",
+    "subject_id": "litteratur",
+    "title": "Litterær geografi: Oslo som tekst",
+    "short_label": "Oslo som tekst",
+    "description": "Hvordan kafeer, leiligheter, scener, forlag og bibliotek gjør Oslo til en litterær infrastruktur av steder og stemmer.",
+    "keywords": [
+      "litterær by",
+      "forfattersteder",
+      "forlag",
+      "bibliotek",
+      "scener"
+    ],
+    "dimensions": [
+      "geografi",
+      "kultur",
+      "historie"
+    ],
+    "core_concepts": [
+      "fortelling",
+      "symbolsk makt",
+      "kanon"
+    ],
+    "blindspots": [
+      "den tause litteraturen som ikke kom inn i arkivene"
+    ],
+    "related_routes": [],
+    "related_places": [],
+    "related_quizzes": [],
+    "status": "core"
+  }
+]
