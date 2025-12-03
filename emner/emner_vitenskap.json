@@ -1,0 +1,72 @@
+[
+  {
+    "emne_id": "em_vit_sannhet_måling_modeller",
+    "subject_id": "vitenskap",
+    "title": "Sannhetsproduksjon gjennom måling og modeller",
+    "short_label": "Måling & modeller",
+    "description": "Hvordan instrumenter, metoder og modeller bestemmer hva som regnes som sant, og hvilke fenomener som blir synlige eller usynlige.",
+    "keywords": [
+      "måling",
+      "modeller",
+      "kalibrering",
+      "standardisering",
+      "evidens"
+    ],
+    "dimensions": [
+      "metode",
+      "teknologi",
+      "epistemologi"
+    ],
+    "core_concepts": [
+      "observasjon",
+      "evidens",
+      "hypotese",
+      "modell",
+      "kalibrering",
+      "replikasjon",
+      "paradigme",
+      "standardisering"
+    ],
+    "blindspots": [
+      "fenomener som ikke kan tallfestes",
+      "ikke-målbare erfaringer",
+      "teknologiens usynlige føringer",
+      "felt som marginaliseres fordi de ikke passer i modeller"
+    ],
+    "related_routes": [],
+    "related_places": [],
+    "related_quizzes": [],
+    "status": "core"
+  },
+  {
+    "emne_id": "em_vit_byen_som_kunnskapskart",
+    "subject_id": "vitenskap",
+    "title": "Byen som kunnskapskart",
+    "short_label": "Kunnskapskart",
+    "description": "Laboratorier, universitet, observatorier og teknologibygg som viser hvor vitenskapelige gjennombrudd og paradigmeskifter fant sted.",
+    "keywords": [
+      "laboratorier",
+      "universitet",
+      "observatorium",
+      "teknologibygg"
+    ],
+    "dimensions": [
+      "geografi",
+      "historie",
+      "institusjoner"
+    ],
+    "core_concepts": [
+      "paradigme",
+      "standardisering",
+      "institusjon"
+    ],
+    "blindspots": [
+      "institusjonell makt og hierarkier",
+      "politikk og prioritering av forskningsmidler"
+    ],
+    "related_routes": [],
+    "related_places": [],
+    "related_quizzes": [],
+    "status": "core"
+  }
+]
