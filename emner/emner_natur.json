@@ -1,0 +1,71 @@
+[
+  {
+    "emne_id": "em_nat_økologi_grenser",
+    "subject_id": "natur",
+    "title": "Økologi, grenser og vippepunkt",
+    "short_label": "Økologi & grenser",
+    "description": "Hvordan kretsløp, økosystemer, vippepunkt og sårbarhet setter materielle grenser for byutvikling og menneskelig aktivitet.",
+    "keywords": [
+      "økosystem",
+      "kretsløp",
+      "vippepunkt",
+      "sårbarhet",
+      "resiliens"
+    ],
+    "dimensions": [
+      "økologi",
+      "klima",
+      "geologi"
+    ],
+    "core_concepts": [
+      "økosystem",
+      "kretsløp",
+      "sårbarhet",
+      "resiliens",
+      "regenerasjon",
+      "forstyrrelse",
+      "vippepunkt"
+    ],
+    "blindspots": [
+      "langsomme sammenbrudd som ikke merkes før det er for sent",
+      "mikroskopiske prosesser (jordliv, mikroplast, kjemi)",
+      "naturen som selvstendig aktør, ikke bare ressurs"
+    ],
+    "related_routes": [],
+    "related_places": [],
+    "related_quizzes": [],
+    "status": "core"
+  },
+  {
+    "emne_id": "em_nat_by_natur_møtepunkt",
+    "subject_id": "natur",
+    "title": "Møte mellom natur og by",
+    "short_label": "Natur & by",
+    "description": "Der dalfører, vassdrag, skog og kystlinje møter urbane strukturer, og hvordan dette former risiko, rekreasjon og byplanlegging.",
+    "keywords": [
+      "urban natur",
+      "vassdrag",
+      "skog",
+      "kyst",
+      "byutvikling"
+    ],
+    "dimensions": [
+      "geografi",
+      "byøkologi",
+      "historie"
+    ],
+    "core_concepts": [
+      "kretsløp",
+      "forstyrrelse",
+      "biomakt"
+    ],
+    "blindspots": [
+      "urban natur som økosystem, ikke dekor",
+      "økologisk kompleksitet som ikke lar seg redusere til tall"
+    ],
+    "related_routes": [],
+    "related_places": [],
+    "related_quizzes": [],
+    "status": "core"
+  }
+]p
