@@ -2,45 +2,228 @@
   {
     "emne_id": "em_his_industriby_1900",
     "subject_id": "historie",
-    "title": "Industriby på 1900-tallet",
+    "title": "Industriby og arbeiderliv rundt 1900",
     "short_label": "Industriby 1900",
-    "description": "Arbeidsliv, klasse og byutvikling i overgangen til industrisamfunnet.",
-    "keywords": ["industriby", "arbeiderklasse", "fabrikker", "byutvikling"],
-    "dimensions": ["arbeidsliv", "byutvikling", "økonomi"],
+    "description": "Industrialisering, klasse, teknologi og hverdagsliv i byer som vokser fram rundt fabrikker, havner og jernbane.",
+    "keywords": [
+      "industri",
+      "arbeiderklasse",
+      "fabrikker",
+      "havner",
+      "jernbane",
+      "byutvikling"
+    ],
+    "dimensions": [
+      "arbeidsliv",
+      "økonomi",
+      "byutvikling",
+      "teknologi"
+    ],
     "core_concepts": [
       "industriell urbanisering",
-      "arbeiderklassen som historisk kraft",
-      "boligforhold i arbeiderstrøk"
+      "arbeiderklasse",
+      "produksjon",
+      "arbeidskonflikter",
+      "boligforhold",
+      "sosial ulikhet"
     ],
     "blindspots": [
-      "kvinners arbeid",
-      "migrasjon og minoriteter"
+      "kvinners lønnede og ulønnede arbeid",
+      "migrantarbeidere og minoriteter",
+      "forurensning og langsiktige helseskader"
     ],
-    "related_routes": ["rt_industriby_01"],
-    "related_places": ["pl_havna_01", "pl_fabrikk_02"],
-    "related_quizzes": ["qz_historie_industriby"],
+    "related_routes": [],
+    "related_places": [],
+    "related_quizzes": [],
     "status": "core"
   },
   {
-    "emne_id": "em_his_okkupasjon_byen",
+    "emne_id": "em_his_okkupasjon_motstand",
     "subject_id": "historie",
-    "title": "Okkupasjon og motstand i byen",
-    "short_label": "Okkupasjon & motstand",
-    "description": "Hvordan krig og okkupasjon preger hverdagsliv, byrom og minnekultur.",
-    "keywords": ["2. verdenskrig", "okkupasjon", "motstandsbevegelse"],
-    "dimensions": ["krig", "politikk", "minnekultur"],
+    "title": "Okkupasjon, krig og motstand i byen",
+    "short_label": "Okkupasjon og motstand",
+    "description": "Hvordan krig og okkupasjon endrer hverdagsliv, byrom, institusjoner og minnekultur – fra kontroll og terror til motstand og små hverdagsvalg.",
+    "keywords": [
+      "2. verdenskrig",
+      "okkupasjon",
+      "motstandsbevegelse",
+      "sivilt mot",
+      "minnekultur"
+    ],
+    "dimensions": [
+      "krig",
+      "politikk",
+      "hverdagsliv",
+      "minnekultur"
+    ],
     "core_concepts": [
       "okkupasjonshverdag",
       "sivilt mot",
-      "minnesmerker og glemsel"
+      "motstandsnettverk",
+      "overvåkning",
+      "minnesmerker",
+      "glemsel",
+      "traume"
     ],
     "blindspots": [
-      "samarbeid og gråsoner",
-      "barns erfaringer under okkupasjon"
+      "gråsoner mellom motstand og samarbeid",
+      "barns og unges perspektiv",
+      "etterkrigstidens oppgjør og fortrengning"
     ],
-    "related_routes": ["rt_okkupasjon_01"],
-    "related_places": ["pl_festning_01", "pl_minne_02"],
-    "related_quizzes": ["qz_historie_okkupasjon"],
+    "related_routes": [],
+    "related_places": [],
+    "related_quizzes": [],
+    "status": "core"
+  },
+  {
+    "emne_id": "em_his_byutvidelse_gentrifisering",
+    "subject_id": "historie",
+    "title": "Byutvidelse, sanering og gentrifisering",
+    "short_label": "Byutvidelse og gentrifisering",
+    "description": "Hvordan byer vokser, rives, fortettes og «pusses opp» – og hvordan dette flytter grenser for hvem som kan bo hvor.",
+    "keywords": [
+      "byutvidelse",
+      "sanering",
+      "gentrifisering",
+      "boligpolitikk",
+      "byfornyelse"
+    ],
+    "dimensions": [
+      "byutvikling",
+      "økonomi",
+      "sosial struktur",
+      "politikk"
+    ],
+    "core_concepts": [
+      "sanering",
+      "gentrifisering",
+      "boligpolitikk",
+      "eiendomskapital",
+      "klassefortrengning",
+      "stedstap"
+    ],
+    "blindspots": [
+      "hverdagslivet til dem som må flytte",
+      "substandard bolig som hjem, ikke bare «slum»",
+      "langsom oppløsning av lokalmiljøer"
+    ],
+    "related_routes": [],
+    "related_places": [],
+    "related_quizzes": [],
+    "status": "core"
+  },
+  {
+    "emne_id": "em_his_migrasjon_mangfold",
+    "subject_id": "historie",
+    "title": "Migrasjon, minoriteter og mangfold i byen",
+    "short_label": "Migrasjon og mangfold",
+    "description": "Hvordan innvandring, flyktninger og interne flyttestrømmer omformer byens språk, næringsliv, kultur og konflikter.",
+    "keywords": [
+      "migrasjon",
+      "innvandring",
+      "minoritet",
+      "diaspora",
+      "integrasjon",
+      "rasialisering"
+    ],
+    "dimensions": [
+      "befolkning",
+      "kultur",
+      "økonomi",
+      "politikk"
+    ],
+    "core_concepts": [
+      "migrasjon",
+      "diaspora",
+      "inkludering",
+      "rasialisering",
+      "flerkulturell by",
+      "grensepraksiser"
+    ],
+    "blindspots": [
+      "indre liv og nettverk i minoritetsmiljøer",
+      "hverdagsdiskriminering",
+      "historiske migrasjonsbølger som ligner dagens"
+    ],
+    "related_routes": [],
+    "related_places": [],
+    "related_quizzes": [],
+    "status": "core"
+  },
+  {
+    "emne_id": "em_his_velferd_hverdagsliv",
+    "subject_id": "historie",
+    "title": "Velferdsstat, hverdagsliv og kropp",
+    "short_label": "Velferd og hverdagsliv",
+    "description": "Fra fattigkasse til velferdsstat: skole, helse, trygd og omsorg som former livsløp, forventninger og kropp i byen.",
+    "keywords": [
+      "velferdsstat",
+      "helse",
+      "utdanning",
+      "trygd",
+      "barndom",
+      "alderdom"
+    ],
+    "dimensions": [
+      "institusjoner",
+      "kropp",
+      "familieliv",
+      "politikk"
+    ],
+    "core_concepts": [
+      "velferdsstat",
+      "institusjonalisering",
+      "normalbiografi",
+      "biopolitikk",
+      "omsorg",
+      "livsløp"
+    ],
+    "blindspots": [
+      "de som faller utenfor velferdsstatens standardløp",
+      "uformell omsorg og familiearbeid",
+      "historiske endringer i barndom og ungdomstid"
+    ],
+    "related_routes": [],
+    "related_places": [],
+    "related_quizzes": [],
+    "status": "core"
+  },
+  {
+    "emne_id": "em_his_minnesteder_historiebruk",
+    "subject_id": "historie",
+    "title": "Minnesteder, monumenter og historiebruk",
+    "short_label": "Minnesteder og historiebruk",
+    "description": "Hvordan minnesmerker, museer, jubileer og navngivning brukes til å fortelle noen historier høyt – og tie andre i hjel.",
+    "keywords": [
+      "minnesteder",
+      "monumenter",
+      "museer",
+      "historiebruk",
+      "jubileer",
+      "kanon"
+    ],
+    "dimensions": [
+      "minnekultur",
+      "politikk",
+      "estetikk",
+      "offentlig rom"
+    ],
+    "core_concepts": [
+      "historiebruk",
+      "kanon",
+      "minneregime",
+      "symbolsk makt",
+      "kontroversielle monumenter",
+      "omskriving av fortiden"
+    ],
+    "blindspots": [
+      "de som aldri får monumenter",
+      "hverdagssteder som bærer tung historie",
+      "lokale mikro-historier utenfor de store fortellingene"
+    ],
+    "related_routes": [],
+    "related_places": [],
+    "related_quizzes": [],
     "status": "core"
   }
 ]
