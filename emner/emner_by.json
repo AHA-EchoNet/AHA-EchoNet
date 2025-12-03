@@ -2,42 +2,214 @@
   {
     "emne_id": "em_by_romlig_orden",
     "subject_id": "by",
-    "title": "Romlig orden i byen",
+    "title": "Romlig orden og byplanlegging",
     "short_label": "Romlig orden",
-    "description": "Gater, plasser og linjer som styrer hvordan vi beveger oss og møtes.",
-    "keywords": ["byrom", "akser", "plasser", "gateplan"],
-    "dimensions": ["romlig", "sosial"],
+    "description": "Gater, plasser, kvartaler og akser som skaper flyt, friksjon og hierarki i byen – hvem ser hva, og hvem møter hvem hvor.",
+    "keywords": [
+      "byplanlegging",
+      "byrom",
+      "akser",
+      "plasser",
+      "kvartaler"
+    ],
+    "dimensions": [
+      "geometri",
+      "sosial struktur",
+      "bevegelse"
+    ],
     "core_concepts": [
-      "aksial struktur",
-      "knutepunkter",
-      "offentlige vs. semi-offentlige rom"
+      "akse",
+      "knutepunkt",
+      "hierarki i byrom",
+      "offentlig vs. semi-offentlig rom",
+      "synlighet",
+      "overvåkbarhet"
     ],
     "blindspots": [
-      "tilgjengelighet for funksjonshemmede",
-      "barns bevegelsesmønstre"
+      "barns blikk og bevegelsesmønstre",
+      "funksjonshemmedes perspektiv",
+      "uformelle og selvorganiserte bruksmåter"
     ],
-    "related_routes": ["rt_byaksen_01"],
-    "related_places": ["pl_torg_01", "pl_bro_02"],
-    "related_quizzes": ["qz_by_romlig_orden"],
+    "related_routes": [],
+    "related_places": [],
+    "related_quizzes": [],
     "status": "core"
   },
   {
-    "emne_id": "em_by_blindsoner_ekskludering",
+    "emne_id": "em_by_infrastruktur_mobilitet",
     "subject_id": "by",
-    "title": "Blindsoner og ekskludering",
-    "short_label": "Blindsoner",
-    "description": "Hvem har ikke nøkkel til byen? Tomrom, bakgater, privatiserte rom.",
-    "keywords": ["ekskludering", "privatisering", "gentrifisering"],
-    "dimensions": ["sosial", "økonomi"],
-    "core_concepts": [
-      "gated communities",
-      "gentrifisering",
-      "uformelle rom"
+    "title": "Infrastruktur og mobilitet",
+    "short_label": "Infrastruktur og mobilitet",
+    "description": "Veier, kollektivtransport, tunneler, broer og datakabler som gjør byen mulig – og bestemmer hvem som kommer seg hvor, når.",
+    "keywords": [
+      "infrastruktur",
+      "transport",
+      "kollektiv",
+      "mobilitet",
+      "logistikk"
     ],
-    "blindspots": [],
-    "related_routes": ["rt_skyggesider_01"],
-    "related_places": ["pl_bakgate_03"],
-    "related_quizzes": ["qz_by_blindsoner"],
+    "dimensions": [
+      "teknologi",
+      "økonomi",
+      "sosial geografi"
+    ],
+    "core_concepts": [
+      "knutepunkt",
+      "pendling",
+      "logistikk",
+      "tilgjengelighet",
+      "transporthierarkier",
+      "transittsoner"
+    ],
+    "blindspots": [
+      "trøtte mellomrom (holdeplasser, parkeringsplasser, veikryss)",
+      "miljøkostnader og støy",
+      "de som ikke har råd til mobilitet"
+    ],
+    "related_routes": [],
+    "related_places": [],
+    "related_quizzes": [],
+    "status": "core"
+  },
+  {
+    "emne_id": "em_by_offentlige_rom_motesteder",
+    "subject_id": "by",
+    "title": "Offentlige rom og møtesteder",
+    "short_label": "Offentlige rom",
+    "description": "Torg, parker, bibliotek, kulturhus og kjøpesentre som scener for hvem som får være synlig, hvem som møtes, og hvilke ritualer som gjentas.",
+    "keywords": [
+      "offentlig rom",
+      "torg",
+      "park",
+      "bibliotek",
+      "kjøpesenter",
+      "kulturhus"
+    ],
+    "dimensions": [
+      "sosial",
+      "kultur",
+      "estetikk"
+    ],
+    "core_concepts": [
+      "offentlighet",
+      "møtested",
+      "brukerkonflikt",
+      "sosial kontroll",
+      "trygghet vs. ekskludering"
+    ],
+    "blindspots": [
+      "de som fortrenges av «ryddig» byrom",
+      "nattens bruk av byen",
+      "uformelle møtesteder og midlertidige rom"
+    ],
+    "related_routes": [],
+    "related_places": [],
+    "related_quizzes": [],
+    "status": "core"
+  },
+  {
+    "emne_id": "em_by_bydelsforskjeller_segregering",
+    "subject_id": "by",
+    "title": "Bydelsforskjeller og segregering",
+    "short_label": "Bydelsforskjeller",
+    "description": "Hvordan inntekt, klasse, etnisitet, utdanning og symbolsk status fordeler seg geografisk – og hvordan det merkes i hverdagen.",
+    "keywords": [
+      "bydeler",
+      "klasse",
+      "segregasjon",
+      "sosial ulikhet",
+      "symbolsk geografi"
+    ],
+    "dimensions": [
+      "økonomi",
+      "sosial struktur",
+      "geografi"
+    ],
+    "core_concepts": [
+      "segregasjon",
+      "stigmatisering",
+      "gode og dårlige adresser",
+      "symbolsk geografi",
+      "nabolagseffekter"
+    ],
+    "blindspots": [
+      "ressurser og styrker i stigmatiserte områder",
+      "hverdagsstrategier for å omgå stempling",
+      "de som lever på tvers av bydelsgrenser"
+    ],
+    "related_routes": [],
+    "related_places": [],
+    "related_quizzes": [],
+    "status": "core"
+  },
+  {
+    "emne_id": "em_by_gentrifisering_eiendom",
+    "subject_id": "by",
+    "title": "Gentrifisering, eiendom og spekulasjon",
+    "short_label": "Gentrifisering og eiendom",
+    "description": "Hvordan eiendomsutvikling, investeringer og estetisering av nabolag endrer hvem som bor, jobber og leker i byen.",
+    "keywords": [
+      "gentrifisering",
+      "eiendom",
+      "investering",
+      "boligpriser",
+      "byfornyelse"
+    ],
+    "dimensions": [
+      "økonomi",
+      "byutvikling",
+      "kultur"
+    ],
+    "core_concepts": [
+      "gentrifisering",
+      "kapitalisering av sted",
+      "airbnb-isering",
+      "kaféifisering",
+      "kreativ-klasse-narrativ"
+    ],
+    "blindspots": [
+      "opplevelsen til de som har «alltid bodd her»",
+      "mellomsjiktet som hverken er fattig eller rik",
+      "vakre fasader som skjuler prekære liv"
+    ],
+    "related_routes": [],
+    "related_places": [],
+    "related_quizzes": [],
+    "status": "core"
+  },
+  {
+    "emne_id": "em_by_ruiner_tomrom_restar",
+    "subject_id": "by",
+    "title": "Ruiner, tomrom og restarealer",
+    "short_label": "Ruiner og tomrom",
+    "description": "Forlatte tomter, ruiner, bakgårder og mellomrom som forteller om økonomiske kriser, skiftende planer og uferdig modernitet.",
+    "keywords": [
+      "ruiner",
+      "tomrom",
+      "restarealer",
+      "bakgårder",
+      "uferdige prosjekter"
+    ],
+    "dimensions": [
+      "historie",
+      "økonomi",
+      "estetikk"
+    ],
+    "core_concepts": [
+      "negativt rom",
+      "ikke-steder",
+      "restarealer",
+      "planleggingsruiner",
+      "motbruk og midlertidig bruk"
+    ],
+    "blindspots": [
+      "uformelle fellesskap som oppstår i restarealer",
+      "økologiske verdier i «uoppdagede» grøntlommer",
+      "trygghet og utrygghet i halvprivate rom"
+    ],
+    "related_routes": [],
+    "related_places": [],
+    "related_quizzes": [],
     "status": "experimental"
   }
 ]
