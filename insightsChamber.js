@@ -798,11 +798,11 @@ function createInsightFromSignal(signal) {
   );
 
   // Bruk dybdescoren som "grunnfjell" + evidens
-  const baseDepth = insight.depth_score || 0;
-  insight.strength.total_score = Math.min(
-    100,
-    insight.strength.evidence_count * 10 + baseDepth
-  );
+      const baseDepth = insight.depth_score || 0;
+    insight.strength.total_score = Math.min(
+      100,
+      insight.strength.evidence_count * 10 + baseDepth
+    );
 }
 
     function addSignalToChamber(chamber, signal) {
