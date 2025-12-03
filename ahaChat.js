@@ -48,6 +48,141 @@ function log(msg) {
   el.textContent += msg + "\n";
 }
 
+function getPanelEl() {
+  return document.getElementById("panel");
+}
+
+function clearPanel() {
+  const el = getPanelEl();
+  if (el) el.innerHTML = "";
+}
+
+function renderDimChip(label, count) {
+  if (!count) return "";
+  return `<span class="dim-chip">${label} <span class="dim-chip-count">${count}</span></span>`;
+}
+
+// Hovedpanelet for ett tema
+function renderTopicPanel(themeId, stats, sem, dims, insights) {
+  const panel = getPanelEl();
+  if (!panel) return;
+
+  const phase = stats.user_phase || "ukjent";
+  const phaseLabelMap = {
+    utforskning: "Utforskning",
+    mønster: "Mønster",
+    press: "Press",
+    fastlåst: "Fastlåst",
+    integrasjon: "Integrasjon"
+  };
+  const phaseLabel = phaseLabelMap[phase] || phase;
+  const phaseClass = "phase-pill phase-" + phase;
+
+  const saturation = stats.insight_saturation || 0;
+  const density = stats.concept_density || 0;
+  const total = stats.insight_count || insights.length || 0;
+
+  const freqOfteAlltid =
+    (sem.frequency.ofte || 0) + (sem.frequency.alltid || 0);
+  const freqPct = total
+    ? Math.round((freqOfteAlltid / total) * 100)
+    : 0;
+
+  const neg = sem.valence.negativ || 0;
+  const pos = sem.valence.positiv || 0;
+  const negPct = total ? Math.round((neg / total) * 100) : 0;
+  const posPct = total ? Math.round((pos / total) * 100) : 0;
+
+  const krav = sem.modality.krav || 0;
+  const hindring = sem.modality.hindring || 0;
+
+  const topInsights = insights.slice(0, 3);
+
+  panel.innerHTML = `
+    <div class="insight-panel">
+      <div class="insight-panel-header">
+        <div class="insight-panel-title">
+          Tema: <span class="theme-id">${themeId}</span>
+        </div>
+        <div class="${phaseClass}">${phaseLabel}</div>
+      </div>
+
+      <div class="panel-grid">
+        <div class="panel-card">
+          <div class="stat-label">Metningsgrad</div>
+          <div class="stat-value">${saturation} / 100</div>
+          <div class="bar">
+            <div class="bar-fill" style="width:${saturation}%;"></div>
+          </div>
+          <div class="stat-sub">
+            Innsikter: ${total} · Tetthet: ${density}/100
+          </div>
+          <div class="stat-sub">
+            Foreslått form: ${stats.artifact_type}
+          </div>
+        </div>
+
+        <div class="panel-card">
+          <div class="stat-label">Frekvens & følelse</div>
+          <div class="stat-sub">
+            «Ofte/alltid»: ${freqOfteAlltid} (${freqPct}% av innsikter)
+          </div>
+          <div class="stat-sub">
+            Negativ valens: ${neg} (${negPct}%)
+          </div>
+          <div class="stat-sub">
+            Positiv valens: ${pos} (${posPct}%)
+          </div>
+          ${
+            krav + hindring > 0
+              ? `<div class="stat-sub">Krav/hindring-setninger: ${
+                  krav + hindring
+                }</div>`
+              : ""
+          }
+        </div>
+      </div>
+
+      <div class="panel-card panel-card-full">
+        <div class="stat-label">Dimensjoner</div>
+        <div class="dim-chips">
+          ${renderDimChip("Følelser", dims.emosjon)}
+          ${renderDimChip("Tanker", dims.tanke)}
+          ${renderDimChip("Atferd", dims.atferd)}
+          ${renderDimChip("Kropp", dims.kropp)}
+          ${renderDimChip("Relasjoner", dims.relasjon)}
+        </div>
+      </div>
+
+      ${
+        topInsights.length
+          ? `
+      <div class="panel-card panel-card-full">
+        <div class="stat-label">Toppinnsikter</div>
+        <ul class="insight-list">
+          ${topInsights
+            .map(
+              (ins, idx) => `
+            <li>
+              <div class="insight-title">${idx + 1}. ${
+                ins.title
+              }</div>
+              ${
+                ins.summary
+                  ? `<div class="insight-meta">${ins.summary}</div>`
+                  : ""
+              }
+            </li>`
+            )
+            .join("")}
+        </ul>
+      </div>`
+          : ""
+      }
+    </div>
+  `;
+}
+
 // ── AHA operations (bruker motoren) ──────────
 
 function handleUserMessage(messageText) {
