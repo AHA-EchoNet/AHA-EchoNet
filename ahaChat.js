@@ -1237,7 +1237,7 @@ function importHistoryGoData(payload) {
   const notes = Array.isArray(payload.notes) ? payload.notes : [];
   const dialogs = Array.isArray(payload.dialogs) ? payload.dialogs : [];
 
-  // Notater → signaler
+  // 1) Notater → signaler
   notes.forEach((n) => {
     if (!n || !n.text) return;
     const themeId = n.categoryId || "ukjent";
@@ -1253,13 +1253,14 @@ function importHistoryGoData(payload) {
       personId: n.personId || null,
       placeId: n.placeId || null,
       type: n.type || "note",
-      createdAt: n.createdAt || payload.exported_at || new Date().toISOString()
+      createdAt:
+        n.createdAt || payload.exported_at || new Date().toISOString(),
     };
 
     chamber = InsightsEngine.addSignalToChamber(chamber, signal);
   });
 
-  // Dialoger → brukerturns → signaler
+  // 2) Dialoger → brukerturns → signaler
   dialogs.forEach((dlg) => {
     if (!dlg || !dlg.text) return;
     const themeId = dlg.categoryId || "ukjent";
@@ -1273,7 +1274,8 @@ function importHistoryGoData(payload) {
     signal.source = "historygo_dialog";
     signal.meta = {
       personId: dlg.personId || null,
-      createdAt: dlg.createdAt || payload.exported_at || new Date().toISOString()
+      createdAt:
+        dlg.createdAt || payload.exported_at || new Date().toISOString(),
     };
 
     chamber = InsightsEngine.addSignalToChamber(chamber, signal);
@@ -1281,6 +1283,7 @@ function importHistoryGoData(payload) {
 
   saveChamberToStorage(chamber);
 }
+
 
 // ── Vis svar fra AHA-AI i panelet / loggen ───────────────
 
