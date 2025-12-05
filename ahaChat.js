@@ -1486,6 +1486,124 @@ async function callAHAAgentForCurrentTopic() {
   }
 }
 
+// ── Emnekatalog UI ──────────────────────────
+
+function setupEmneUI() {
+  const fieldsEl = document.getElementById("emne-fields");
+  const listEl = document.getElementById("emne-list");
+  const txt = document.getElementById("msg");
+
+  if (!fieldsEl || !listEl || !txt) return;
+  if (typeof window.Emner === "undefined") {
+    console.warn("Emner-loader (Emner) er ikke tilgjengelig.");
+    return;
+  }
+
+  const EMNE_FIELDS = [
+    { id: "musikk", label: "Musikk" },
+    { id: "vitenskap", label: "Vitenskap" },
+    { id: "litteratur", label: "Litteratur" },
+    { id: "populaerkultur", label: "Popkultur" },
+    { id: "naeringsliv", label: "Næringsliv" },
+    { id: "sport", label: "Sport" },
+    // legg til flere felt her hvis du vil
+  ];
+
+  let currentFieldId = null;
+
+  function setActiveFieldButton(fieldId) {
+    const buttons = fieldsEl.querySelectorAll(".emne-field-btn");
+    buttons.forEach((btn) => {
+      const id = btn.getAttribute("data-field-id");
+      btn.classList.toggle("active", id === fieldId);
+    });
+  }
+
+  async function loadEmnerForField(fieldId) {
+    currentFieldId = fieldId;
+    setActiveFieldButton(fieldId);
+
+    listEl.innerHTML =
+      '<div class="emne-list-loading">Laster emner for ' +
+      fieldId +
+      " …</div>";
+
+    try {
+      const emner = await window.Emner.loadForSubject(fieldId);
+      if (!Array.isArray(emner) || emner.length === 0) {
+        listEl.innerHTML =
+          '<div class="emne-list-empty">Ingen emner registrert for dette feltet ennå.</div>';
+        return;
+      }
+
+      const html = emner
+        .map((emne) => {
+          const emneId = emne.emne_id || emne.id || "";
+          const title = emne.short_label || emne.title || emneId;
+          const desc = emne.description || emne.ingress || "";
+
+          return `
+            <div class="emne-item" data-emne-id="${emneId}">
+              <div class="emne-title">${title}</div>
+              ${
+                desc
+                  ? `<div class="emne-desc">${desc}</div>`
+                  : ""
+              }
+              <button type="button" class="emne-use-btn">
+                Bruk emne i notat
+              </button>
+            </div>
+          `;
+        })
+        .join("");
+
+      listEl.innerHTML = html;
+
+      listEl
+        .querySelectorAll(".emne-use-btn")
+        .forEach((btn) => {
+          btn.addEventListener("click", (e) => {
+            const item = e.target.closest(".emne-item");
+            if (!item) return;
+            const emneId = item.getAttribute("data-emne-id") || "";
+            const titleEl = item.querySelector(".emne-title");
+            const title = titleEl ? titleEl.textContent.trim() : emneId;
+
+            const insert =
+              "\n#" + (emneId || "emne") + " " + title + " ";
+
+            txt.value = (txt.value || "").trim() + insert;
+            txt.focus();
+          });
+        });
+    } catch (err) {
+      console.warn("Feil ved lasting av emner for", fieldId, err);
+      listEl.innerHTML =
+        '<div class="emne-list-error">Feil ved lasting av emner for dette feltet.</div>';
+    }
+  }
+
+  // Sett opp felt-knapper
+  fieldsEl.innerHTML = "";
+  EMNE_FIELDS.forEach((f) => {
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "emne-field-btn";
+    btn.textContent = f.label;
+    btn.setAttribute("data-field-id", f.id);
+    btn.addEventListener("click", () => {
+      loadEmnerForField(f.id);
+    });
+    fieldsEl.appendChild(btn);
+  });
+
+  // Last første felt som start (hvis ønsket)
+  if (EMNE_FIELDS.length > 0) {
+    loadEmnerForField(EMNE_FIELDS[0].id);
+  }
+}
+
 // ── Setup ────────────────────────────────────
 
 function setupUI() {
@@ -1663,12 +1781,20 @@ function setupUI() {
     log("Innsiktskammer nullstilt (alle tema slettet).");
   });
 
-    clearOutput();
+    // Sett opp Emnekatalog-UI
+  try {
+    setupEmneUI();
+  } catch (e) {
+    console.warn("Klarte ikke sette opp Emnekatalog-UI:", e);
+  }
+
+  clearOutput();
   clearPanel();
   log(
-    "AHA Chat – Innsiktsmotor V1 + Metamotor + AHA-AI klar. " +
-      "Velg tema-id, skriv en tanke og trykk «Send»."
+    "AHA Chat – Innsiktsmotor V1 + Metamotor + Emnekatalog klar. " +
+      "Velg tema-id, skriv en tanke og trykk «Send» – bruk emnekatalogen for inspirasjon."
   );
+
 
   // NYTT: fyll tema-velgeren med faktiske tema
   refreshThemePicker();
