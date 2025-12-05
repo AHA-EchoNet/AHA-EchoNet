@@ -1661,7 +1661,55 @@ function mergeConcepts(existing, incoming) {
 
     return lines.join("\n");
   }
-  
+
+
+  // ── Begreper pr tema ──────────────────────────────────────
+function getConceptsForTheme(chamber, subjectId, themeId) {
+  const insights = getInsightsForTopic(chamber, subjectId, themeId) || [];
+  const map = Object.create(null);
+
+  insights.forEach((ins) => {
+    const theme = ins.theme_id || themeId || "ukjent";
+    (ins.concepts || []).forEach((c) => {
+      if (!c || !c.key) return;
+      if (!map[c.key]) {
+        map[c.key] = {
+          key: c.key,
+          total_count: 0,
+          themes: new Set(),
+          examples: [],
+        };
+      }
+      map[c.key].total_count += c.count || 1;
+      map[c.key].themes.add(theme);
+
+      if (Array.isArray(c.examples)) {
+        c.examples.forEach((ex) => {
+          if (
+            ex &&
+            map[c.key].examples.length < 5 &&
+            !map[c.key].examples.includes(ex)
+          ) {
+            map[c.key].examples.push(ex);
+          }
+        });
+      }
+    });
+  });
+
+  const arr = Object.values(map).map((entry) => ({
+    key: entry.key,
+    total_count: entry.total_count,
+    theme_count: entry.themes.size,
+    themes: Array.from(entry.themes),
+    examples: entry.examples,
+  }));
+
+  arr.sort((a, b) => b.total_count - a.total_count);
+  return arr;
+}
+
+
   // ── Public API ─────────────────────────────
 
   const InsightsEngine = {
@@ -1678,7 +1726,10 @@ function mergeConcepts(existing, incoming) {
     createSynthesisText,
     createArticleDraft,
     computeTopicsOverview,
-    createNarrativeForTopic
+    createNarrativeForTopic,
+    extractConcepts,
+  mergeConcepts,
+  getConceptsForTheme
   };
 
   if (typeof module !== "undefined" && module.exports) {
