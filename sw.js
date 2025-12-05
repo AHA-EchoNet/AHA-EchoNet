@@ -2,7 +2,7 @@
 // Service worker for AHA Chat – offline + cache av app-shell + emne-filer
 
 // ⚠️ Husk å bump'e versjonen når du endrer ASSETS
-const CACHE_NAME = "aha-chat-v1.0.0.111";
+const CACHE_NAME = "aha-chat-v1.0.0.112";
 
 // Justér stier hvis nettstedet ligger i en undermappe
 const ASSETS = [
