@@ -1583,16 +1583,71 @@ function setupUI() {
               hit.emne_id +
               "]"
           );
+
+          // 🔗 KOBLE EMNE-TREFFET INN I SISTE INNSIKT I DETTE TEMAET
+          try {
+            const chamber = loadChamberFromStorage();
+            const themeId = getCurrentThemeId();
+            const insightsForTopic =
+              InsightsEngine.getInsightsForTopic(
+                chamber,
+                SUBJECT_ID,
+                themeId
+              ) || [];
+
+            if (insightsForTopic.length > 0) {
+              // Finn "siste" innsikt basert på last_updated / first_seen
+              const latest = insightsForTopic
+                .slice()
+                .sort((a, b) => {
+                  const aTime =
+                    a.last_updated || a.first_seen || "";
+                  const bTime =
+                    b.last_updated || b.first_seen || "";
+                  return bTime.localeCompare(aTime);
+                })[0];
+
+              // Legg til / utvid emne-tags
+              if (!Array.isArray(latest.emne_tags)) {
+                latest.emne_tags = [];
+              }
+
+              latest.emne_tags.push({
+                subject_id: subjectId,
+                emne_id: hit.emne_id,
+                short_label: hit.short_label || hit.title,
+                title: hit.title || hit.short_label,
+                score: hit.score,
+                matched_text: val,
+                matched_at: new Date().toISOString(),
+                source: "aha_msg_v1"
+              });
+
+              saveChamberToStorage(chamber);
+              log("   ↳ Emne-treff koblet til siste innsikt i temaet.");
+            } else {
+              log(
+                "   (Fant ingen innsikter å koble emne til ennå – skriv litt mer først.)"
+              );
+            }
+          } catch (e) {
+            console.warn("Klarte ikke å koble emne til innsikt:", e);
+            log(
+              "   (Teknisk feil ved kobling av emne til innsikt – se console.)"
+            );
+          }
         } else {
-          log("→ Fant ikke noe tydelig emne for " + subjectId + " i denne meldingen.");
+          log(
+            "→ Fant ikke noe tydelig emne for " +
+              subjectId +
+              " i denne meldingen."
+          );
         }
       } catch (e) {
         console.warn("Emne-matching feilet:", e);
         log("→ Klarte ikke å matche emne (se console).");
       }
     }
-  });
-
 
   
     btnInsights.addEventListener("click", showInsightsForCurrentTopic);
