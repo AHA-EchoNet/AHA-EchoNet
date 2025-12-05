@@ -1,15 +1,18 @@
 // server.js
-// Ekte AHA-agent backend (ESM):
-// - Tar imot state fra innsiktsmotoren din (buildAIStateForTheme)
-// - Kaller OpenAI Responses API med JSON-schema (Structured Outputs)
-// - Returnerer strukturert coach-svar til frontend
+// Ekte AHA-agent backend (ESM) + statisk server for AHA-frontenden
 
 import express from "express";
 import cors from "cors";
 import OpenAI from "openai";
+import path from "path";
+import { fileURLToPath } from "url";
 
 const app = express();
 const PORT = process.env.PORT || 3001;
+
+// ESM-hjelpere for __dirname
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // Sjekk at vi har API-nøkkel
 if (!process.env.OPENAI_API_KEY) {
@@ -17,13 +20,21 @@ if (!process.env.OPENAI_API_KEY) {
   process.exit(1);
 }
 
-// OpenAI-klient – MÅ være med
+// OpenAI-klient
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 });
 
 app.use(cors());
 app.use(express.json({ limit: "1mb" }));
+
+// 🚩 NYTT: server static filer (index.html, ahaChat.js, css, osv.) fra repoet
+app.use(express.static(__dirname));
+
+// Egen liten healthcheck (valgfritt)
+app.get("/health", (req, res) => {
+  res.json({ ok: true, message: "AHA-agent backend kjører" });
+});
 
 // Bygger prompt til modellen basert på state
 function buildPromptFromState(state) {
@@ -162,7 +173,6 @@ app.post("/api/aha-agent", async (req, res) => {
       },
     });
 
-    // Structured Outputs: innholdet ligger som enten .json eller .text
     const first = completion.output[0].content[0];
     let data;
 
@@ -184,6 +194,11 @@ app.post("/api/aha-agent", async (req, res) => {
   }
 });
 
+// Fallback: send index.html for rot-url (nyttig hvis noen går til /)
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "index.html"));
+});
+
 app.listen(PORT, () => {
-  console.log(`AHA-agent backend kjører på http://localhost:${PORT}`);
+  console.log(`AHA-agent backend + frontend kjører på http://localhost:${PORT}`);
 });
