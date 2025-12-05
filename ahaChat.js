@@ -1515,14 +1515,17 @@ function setupUI() {
   const btnAI = document.getElementById("btn-ai"); // NY
     const btnImportHG = document.getElementById("btn-import-hg");
   const themePicker = document.getElementById("theme-picker");
+    const fieldSelect = document.getElementById("field-id");
   // ...
 
-  btnSend.addEventListener("click", () => {
+    btnSend.addEventListener("click", async () => {
     const val = (txt.value || "").trim();
     if (!val) {
       alert("Skriv noe først 😊");
       return;
     }
+
+    // 1) Legg meldingen inn i innsiktskammeret som før
     const n = handleUserMessage(val);
     log(
       "Melding lagt til i temaet «" +
@@ -1534,6 +1537,37 @@ function setupUI() {
     txt.value = "";
 
     refreshThemePicker();
+
+    // 2) Emne-matching (valgfritt felt / fag)
+    const subjectId =
+      fieldSelect && fieldSelect.value
+        ? fieldSelect.value.trim()
+        : null;
+
+    if (
+      subjectId &&
+      typeof matchEmneForText === "function"
+    ) {
+      try {
+        const hit = await matchEmneForText(subjectId, val);
+        if (hit) {
+          log(
+            "→ Emne (" +
+              subjectId +
+              "): " +
+              hit.short_label +
+              " [" +
+              hit.emne_id +
+              "]"
+          );
+        } else {
+          log("→ Fant ikke noe tydelig emne for " + subjectId + " i denne meldingen.");
+        }
+      } catch (e) {
+        console.warn("Emne-matching feilet:", e);
+        log("→ Klarte ikke å matche emne (se console).");
+      }
+    }
   });
 
 
