@@ -25,6 +25,35 @@ function saveChamberToStorage(chamber) {
   }
 }
 
+
+function refreshThemePicker() {
+  const select = document.getElementById("theme-picker");
+  if (!select) return;
+
+  const chamber = loadChamberFromStorage();
+  const overview = InsightsEngine.computeTopicsOverview(chamber);
+
+  // Tøm gammel liste
+  select.innerHTML = "";
+
+  // Default-valg
+  const optDefault = document.createElement("option");
+  optDefault.value = "";
+  optDefault.textContent = overview.length
+    ? "(velg tema …)"
+    : "(ingen tema ennå)";
+  select.appendChild(optDefault);
+
+  // Fyll inn alle tema
+  overview.forEach((t) => {
+    const opt = document.createElement("option");
+    opt.value = t.topic_id; // = theme_id
+    opt.textContent =
+      t.topic_id + " (" + t.insight_count + " innsikter)";
+    select.appendChild(opt);
+  });
+}
+
 // ── UI helpers ───────────────────────────────
 
 function getCurrentThemeId() {
@@ -1416,6 +1445,7 @@ function setupUI() {
   const btnMeta = document.getElementById("btn-meta");
   const btnAI = document.getElementById("btn-ai"); // NY
     const btnImportHG = document.getElementById("btn-import-hg");
+  const themePicker = document.getElementById("theme-picker");
   // ...
 
   btnSend.addEventListener("click", () => {
@@ -1458,6 +1488,19 @@ function setupUI() {
     btnImportHG.addEventListener("click", importHistoryGoDataFromSharedStorage);
   }
 
+  if (themePicker) {
+    themePicker.addEventListener("change", () => {
+      const val = themePicker.value;
+      if (!val) return;
+
+      const input = document.getElementById("theme-id");
+      if (input) {
+        input.value = val;
+      }
+      log("Tema byttet til «" + val + "» via tema-velgeren.");
+    });
+  }
+  
   btnReset.addEventListener("click", () => {
     localStorage.removeItem(STORAGE_KEY);
     clearOutput();
@@ -1465,12 +1508,15 @@ function setupUI() {
     log("Innsiktskammer nullstilt (alle tema slettet).");
   });
 
-  clearOutput();
+    clearOutput();
   clearPanel();
   log(
     "AHA Chat – Innsiktsmotor V1 + Metamotor + AHA-AI klar. " +
       "Velg tema-id, skriv en tanke og trykk «Send»."
   );
+
+  // NYTT: fyll tema-velgeren med faktiske tema
+  refreshThemePicker();
 }
 
 document.addEventListener("DOMContentLoaded", setupUI);
