@@ -1,16 +1,39 @@
 // sw.js
-// Enkel service worker for AHA Chat – offline + cache av app-shell
+// Service worker for AHA Chat – offline + cache av app-shell + emne-filer
 
-const CACHE_NAME = "aha-chat-v1.0.0.109";
+// ⚠️ Husk å bump'e versjonen når du endrer ASSETS
+const CACHE_NAME = "aha-chat-v1.0.0.111";
 
 // Justér stier hvis nettstedet ligger i en undermappe
 const ASSETS = [
   "/",                 // forsiden (på GitHub Pages user-site)
   "/index.html",
   "/aha-chat.css",
+
+  // Motorer
   "/insightsChamber.js",
   "/metaInsightsEngine.js",
-  "/ahaChat.js"
+
+  // Emne-motor
+  "/emnerLoader.js",
+  "/ahaEmneMatcher.js",
+
+  // Felt-profiler
+  "/ahaFieldProfiles.js",
+
+  // UI / glue
+  "/ahaChat.js",
+
+  // Emne-JSON (for offline emner per fag)
+  "/emner/emner_historie.json",
+  "/emner/emner_by.json",
+  "/emner/emner_kunst.json",
+  "/emner/emner_musikk.json",
+  "/emner/emner_natur.json",
+  "/emner/emner_vitenskap.json",
+  "/emner/emner_litteratur.json",
+  "/emner/emner_popkultur.json",
+  "/emner/emner_naeringsliv.json"
 ];
 
 // Install – cache grunnfilene
@@ -37,7 +60,7 @@ self.addEventListener("activate", (event) => {
   );
 });
 
-// Fetch – prøv cache først, deretter nettverk
+// Fetch – prøv cache først, deretter nettverk + legg i cache
 self.addEventListener("fetch", (event) => {
   event.respondWith(
     caches.match(event.request).then((cached) => {
