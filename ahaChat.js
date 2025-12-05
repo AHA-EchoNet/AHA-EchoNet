@@ -1463,8 +1463,12 @@ function setupUI() {
         " setning(er) analysert)"
     );
     txt.value = "";
+
+    refreshThemePicker();
   });
 
+
+  
     btnInsights.addEventListener("click", showInsightsForCurrentTopic);
   btnStatus.addEventListener("click", showTopicStatus);
   btnSynth.addEventListener("click", showSynthesisForCurrentTopic);
