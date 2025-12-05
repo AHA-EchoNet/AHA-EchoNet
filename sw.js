@@ -2,7 +2,7 @@
 // Enkel service worker for AHA Chat – offline + cache av app-shell
 // NY: blander oss ikke inn i API-kall / andre domener
 
-const CACHE_NAME = "aha-chat-v3.0.4.200";
+const CACHE_NAME = "aha-chat-v3.0.4.201";
 
 // Justér stier hvis nettstedet ligger i en undermappe
 const ASSETS = [
