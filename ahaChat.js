@@ -25,35 +25,6 @@ function saveChamberToStorage(chamber) {
   }
 }
 
-
-function refreshThemePicker() {
-  const select = document.getElementById("theme-picker");
-  if (!select) return;
-
-  const chamber = loadChamberFromStorage();
-  const overview = InsightsEngine.computeTopicsOverview(chamber);
-
-  // Tøm gammel liste
-  select.innerHTML = "";
-
-  // Default-valg
-  const optDefault = document.createElement("option");
-  optDefault.value = "";
-  optDefault.textContent = overview.length
-    ? "(velg tema …)"
-    : "(ingen tema ennå)";
-  select.appendChild(optDefault);
-
-  // Fyll inn alle tema
-  overview.forEach((t) => {
-    const opt = document.createElement("option");
-    opt.value = t.topic_id; // = theme_id
-    opt.textContent =
-      t.topic_id + " (" + t.insight_count + " innsikter)";
-    select.appendChild(opt);
-  });
-}
-
 // ─ UI helpers ───────────────────────────────
 
 // Pek på tema-scrollen (select#theme-picker i index.html)
