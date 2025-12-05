@@ -132,10 +132,17 @@ function log(msg) {
   if (!el) return;
   el.textContent += msg + "\n";
 }
-
-function getFieldProfileForTheme(themeId) {
+function getFieldProfileForTheme(themeOrFieldId) {
   if (typeof HG_FIELD_PROFILES === "undefined") return null;
-  return HG_FIELD_PROFILES[themeId] || null;
+  return HG_FIELD_PROFILES[themeOrFieldId] || null;
+}
+
+// Hent valgt felt/fag (subject_id for emner)
+function getCurrentFieldId() {
+  const sel = document.getElementById("field-id");
+  if (!sel) return null;
+  const val = (sel.value || "").trim();
+  return val || null;
 }
 
 function buildAIStateForTheme(themeId) {
@@ -180,9 +187,15 @@ function buildAIStateForTheme(themeId) {
     )
     .slice(0, 5);
 
-  const fieldProfile = getFieldProfileForTheme(themeId);
+  // Felt-linse (fra select#field-id)
+  const fieldId = getCurrentFieldId();
+  let fieldProfile = null;
+  if (fieldId && typeof HG_FIELD_PROFILES !== "undefined") {
+    fieldProfile = HG_FIELD_PROFILES[fieldId] || null;
+  }
 
   return {
+    // 🔹 beholdt fra gammel versjon
     user_id: SUBJECT_ID,
     theme_id: themeId,
     topic_stats: stats,
@@ -191,9 +204,19 @@ function buildAIStateForTheme(themeId) {
     topic_narrative: narrative,
     top_insights: topInsights,
     meta_profile: metaProfile,
-    field_profile: fieldProfile   // 👈 nytt: hele merket/feltet
+
+    // 🔹 nye felter fra “emne”-versjonen
+    subject_id: SUBJECT_ID,
+    field_id: fieldId,
+    field_profile: fieldProfile,
+    insights,                 // råliste med innsikter
+    semantic_summary: sem,    // alias til topic_semantics
+    dimensions_summary: dims, // alias til topic_dimensions
+    narrative_summary: narrative // alias til topic_narrative
   };
 }
+
+
 
 // ── Panel-hjelpere ──────────────────────────
 
