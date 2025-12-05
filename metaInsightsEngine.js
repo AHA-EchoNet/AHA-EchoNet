@@ -239,51 +239,60 @@
     return patterns;
   }
 
-
+  
+  // ── Begrepskart på tvers av tema ────────────────────────
 
   function buildConceptIndex(enrichedInsights) {
     const index = new Map();
 
-    for (const ins of enrichedInsights) {
-      if (!ins || !ins.concepts) continue;
+    (enrichedInsights || []).forEach((ins) => {
+      const themeId = ins.theme_id || "ukjent";
 
-      for (const c of ins.concepts) {
-        if (!c || !c.key) continue;
+      (ins.concepts || []).forEach((c) => {
+        if (!c || !c.key) return;
+
         let entry = index.get(c.key);
         if (!entry) {
           entry = {
             key: c.key,
             total_count: 0,
             themes: new Set(),
-            examples: new Set(),
+            examples: [],
           };
           index.set(c.key, entry);
         }
 
-        entry.total_count += c.count || 0;
-        if (ins.theme_id) {
-          entry.themes.add(ins.theme_id);
+        entry.total_count += c.count || 1;
+        entry.themes.add(themeId);
+
+        if (Array.isArray(c.examples)) {
+          c.examples.forEach((ex) => {
+            if (
+              ex &&
+              entry.examples.length < 5 &&
+              !entry.examples.includes(ex)
+            ) {
+              entry.examples.push(ex);
+            }
+          });
         }
-        (c.examples || []).forEach((ex) => {
-          if (entry.examples.size < 10) {
-            entry.examples.add(ex);
-          }
-        });
-      }
-    }
+      });
+    });
 
     return Array.from(index.values())
-      .map((e) => ({
-        key: e.key,
-        total_count: e.total_count,
-        theme_count: e.themes.size,
-        themes: Array.from(e.themes),
-        examples: Array.from(e.examples),
+      .map((entry) => ({
+        key: entry.key,
+        total_count: entry.total_count,
+        theme_count: entry.themes.size,
+        themes: Array.from(entry.themes),
+        examples: entry.examples,
       }))
       .sort((a, b) => b.total_count - a.total_count);
   }
 
-    function buildSemioticProfile(enrichedInsights) {
+  // ── Semiotisk profil på tvers av innsikter ──────────────
+
+  function buildSemioticProfile(enrichedInsights) {
     const summary = {
       total_insights: 0,
       body_count: 0,
@@ -296,12 +305,11 @@
       emoji_count: 0,
     };
 
-    for (const ins of enrichedInsights) {
+    for (const ins of enrichedInsights || []) {
       if (!ins || !ins.semiotic) continue;
       summary.total_insights += 1;
 
-      const { domains = {}, markers = {}, emojis = [] } =
-        ins.semiotic;
+      const { domains = {}, markers = {}, emojis = [] } = ins.semiotic;
 
       if (domains.body) summary.body_count += 1;
       if (domains.space) summary.space_count += 1;
@@ -382,7 +390,7 @@
   
   // ── Hovedfunksjon: bygg meta-profil for en bruker ───────
 
-  function buildUserMetaProfile(chamber, subjectId) {
+    function buildUserMetaProfile(chamber, subjectId) {
     if (!IE) {
       return null;
     }
@@ -406,23 +414,22 @@
       });
     }
 
-        const globalProfile = computeGlobalSemanticProfile(topicProfiles);
+    const globalProfile = computeGlobalSemanticProfile(topicProfiles);
     const patterns = detectCrossTopicPatterns(
       topicProfiles,
       globalProfile
     );
+
+    // Berik innsikter med lifecycle-status
     const enrichedInsights = enrichInsightsWithLifecycle(
       chamber,
       subjectId
     );
-    
-    const concepts = buildConceptIndex(enrichedInsights);
 
-    // Bygg globalt begrepskart basert på alle berikede innsikter
+    // Globalt begrepskart og semiotisk profil
     const conceptIndex = buildConceptIndex(enrichedInsights);
-
     const semioticProfile = buildSemioticProfile(enrichedInsights);
-    
+
     return {
       subject_id: subjectId,
       topics: topicProfiles,
@@ -430,7 +437,7 @@
       semiotic: semioticProfile,
       patterns,
       insights: enrichedInsights, // innsikter med lifecycle-status
-      concepts: conceptIndex,     // 🔹 nytt: global begrepsindeks
+      concepts: conceptIndex,     // global begrepsindeks
     };
   }
 
