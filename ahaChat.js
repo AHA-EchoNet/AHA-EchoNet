@@ -1275,6 +1275,8 @@ function exportChamberJson() {
 
 // ── Meta-motor: global brukerprofil ──────────
 
+// ── Meta-motor: global brukerprofil ──────────
+
 function showMetaProfileForUser() {
   const chamber = loadChamberFromStorage();
 
@@ -1282,7 +1284,9 @@ function showMetaProfileForUser() {
   clearPanel();
 
   if (typeof MetaInsightsEngine === "undefined") {
-    log("MetaInsightsEngine er ikke lastet. Sjekk at metaInsightsEngine.js er inkludert i index.html.");
+    log(
+      "MetaInsightsEngine er ikke lastet. Sjekk at metaInsightsEngine.js er inkludert i index.html."
+    );
     return;
   }
 
@@ -1300,26 +1304,26 @@ function showMetaProfileForUser() {
   renderMetaPanel(profile);
 
   // Enkel tekstlig oppsummering
-  const g = profile.global;
+  const g = profile.global || {};
   log("META-PROFIL for " + SUBJECT_ID + ":\n");
   log(
     "- Gjennomsnittlig metning på tvers av tema: " +
-      Math.round(g.avg_saturation) +
+      Math.round(g.avg_saturation || 0) +
       " / 100"
   );
   log(
     "- Press-indeks (krav+hindring vs mulighet): " +
-      g.pressure_index.toFixed(2)
+      (g.pressure_index ?? 0).toFixed(2)
   );
   log(
     "- Negativitetsindeks (andel negativ valens): " +
-      g.negativity_index.toFixed(2)
+      (g.negativity_index ?? 0).toFixed(2)
   );
   log(
     "- Antall fastlåste tema: " +
-      g.stuck_topics +
+      (g.stuck_topics || 0) +
       ", integrasjons-tema: " +
-      g.integration_topics
+      (g.integration_topics || 0)
   );
 
   if (profile.patterns && profile.patterns.length > 0) {
@@ -1336,7 +1340,6 @@ function showMetaProfileForUser() {
   } else {
     log("\nIngen tydelige kryss-tema-mønstre oppdaget ennå.");
   }
-}
 
   // Toppbegreper – enkel liste
   if (profile.concepts && profile.concepts.length > 0) {
@@ -1355,6 +1358,77 @@ function showMetaProfileForUser() {
   } else {
     log("\nIngen begreper registrert ennå (skriv litt mer tekst).");
   }
+}
+
+// ── Import fra History Go (delt localStorage) ─────────────────
+
+// Tar inn payload fra History Go og lager signaler i AHA-kammeret
+function importHistoryGoData(payload) {
+  if (!payload) return;
+
+  const chamber = loadChamberFromStorage();
+  const subjectId = "sub_historygo";
+
+  const notes = Array.isArray(payload.notes) ? payload.notes : [];
+  const dialogs = Array.isArray(payload.dialogs) ? payload.dialogs : [];
+
+  // 1) Notater → signaler
+  notes.forEach((n) => {
+    if (!n.text) return;
+    const themeId = n.categoryId || n.category || "ukjent";
+
+    const sig = InsightsEngine.createSignalFromMessage(
+      n.text,
+      subjectId,
+      themeId
+    );
+    // Overstyr timestamp hvis vi har noe bedre
+    sig.timestamp = n.createdAt || payload.exported_at || sig.timestamp;
+    InsightsEngine.addSignalToChamber(chamber, sig);
+  });
+
+  // 2) Dialoger → bare bruker-tekst inn
+  dialogs.forEach((dlg) => {
+    const themeId = dlg.categoryId || "ukjent";
+
+    (dlg.turns || [])
+      .filter((t) => t.from === "user" && t.text)
+      .forEach((t) => {
+        const sig = InsightsEngine.createSignalFromMessage(
+          t.text,
+          subjectId,
+          themeId
+        );
+        sig.timestamp = dlg.created_at || payload.exported_at || sig.timestamp;
+        InsightsEngine.addSignalToChamber(chamber, sig);
+      });
+  });
+
+  saveChamberToStorage(chamber);
+}
+
+// Leser buffer fra lokalStorage og kaller importHistoryGoData
+function importHistoryGoDataFromSharedStorage() {
+  clearOutput();
+  const raw = localStorage.getItem("aha_import_payload_v1");
+  if (!raw) {
+    log(
+      "Fant ingen History Go-data å importere (aha_import_payload_v1 er tom)."
+    );
+    return;
+  }
+
+  try {
+    const payload = JSON.parse(raw);
+    importHistoryGoData(payload);
+    log("Importerte History Go-data fra lokal storage.");
+    if (payload.exported_at) {
+      log("Eksportert fra History Go: " + payload.exported_at);
+    }
+  } catch (e) {
+    log("Klarte ikke å lese History Go-data: " + e.message);
+  }
+}
 
 // ── Import fra History Go (delt localStorage) ─────────────────
 
