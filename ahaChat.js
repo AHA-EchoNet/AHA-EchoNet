@@ -4,6 +4,26 @@
 const SUBJECT_ID = "sub_laring";
 const STORAGE_KEY = "aha_insight_chamber_v1";
 
+// Enkel debug-hjelper som skriver JSON til debug-tekstfeltet i UI
+function ahaDebug(obj, label) {
+  try {
+    const el = document.getElementById("aha-debug-output");
+    if (!el) return;
+
+    const header = label ? `# ${label}\n` : "";
+    const body =
+      obj == null
+        ? "null"
+        : typeof obj === "string"
+        ? obj
+        : JSON.stringify(obj, null, 2);
+
+    el.value = header + body;
+  } catch (e) {
+    // Debug skal aldri kræsje appen
+  }
+}
+
 // ── Lagring ──────────────────────────────────
 
 function loadChamberFromStorage() {
@@ -1801,3 +1821,58 @@ function setupUI() {
 }
 
 document.addEventListener("DOMContentLoaded", setupUI);
+
+document.addEventListener("DOMContentLoaded", () => {
+  // ... her har du sikkert allerede annen init-kode ...
+
+  const debugInsightsBtn = document.getElementById("aha-debug-insights-btn");
+  const debugStatsBtn = document.getElementById("aha-debug-stats-btn");
+
+  if (debugInsightsBtn) {
+    debugInsightsBtn.addEventListener("click", () => {
+      try {
+        const themeId = getCurrentThemeId();
+        const chamber = loadChamberFromStorage();
+        const insights = InsightsEngine.getInsightsForTopic(
+          chamber,
+          SUBJECT_ID,
+          themeId
+        );
+
+        ahaDebug(
+          insights,
+          `Rå innsikter for tema "${themeId}" (count=${insights.length})`
+        );
+      } catch (e) {
+        ahaDebug(
+          { error: e && e.message ? e.message : String(e) },
+          "Feil ved henting av innsikter"
+        );
+      }
+    });
+  }
+
+  if (debugStatsBtn) {
+    debugStatsBtn.addEventListener("click", () => {
+      try {
+        const themeId = getCurrentThemeId();
+        const chamber = loadChamberFromStorage();
+        const stats = InsightsEngine.computeTopicStats(
+          chamber,
+          SUBJECT_ID,
+          themeId
+        );
+
+        ahaDebug(
+          stats,
+          `Rå stats for tema "${themeId}"`
+        );
+      } catch (e) {
+        ahaDebug(
+          { error: e && e.message ? e.message : String(e) },
+          "Feil ved henting av stats"
+        );
+      }
+    });
+  }
+});
