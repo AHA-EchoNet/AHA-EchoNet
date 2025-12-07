@@ -807,13 +807,73 @@ function showTopicStatus() {
   renderStatusPanel(themeId, stats);
 
   log("Status for tema " + themeId + ":");
-  log("- Innsikter: " + stats.insight_count);
-  log("- Innsiktsmetningsgrad: " + stats.insight_saturation + "/100");
-  log("- Begrepstetthet: " + stats.concept_density + "/100");
+  log("- Innsikter: " + (stats.insight_count || 0));
+  log(
+    "- Innsiktsmetningsgrad: " +
+      (stats.insight_saturation ?? 0) +
+      "/100"
+  );
+  log(
+    "- Begrepstetthet: " +
+      (stats.concept_density ?? 0) +
+      "/100"
+  );
   if (stats.user_phase) {
     log("- Fase (lesning av prosess): " + stats.user_phase);
   }
   log("→ Foreslått form: " + stats.artifact_type);
+
+  // ── NYTT: språk / logikk / meta-begreper ──
+
+  if (typeof stats.avg_coherence === "number") {
+    log(
+      "- Tekstlig koherens (gj.snitt): " +
+        stats.avg_coherence.toFixed(2)
+    );
+  }
+
+  if (typeof stats.avg_terminology === "number") {
+    log(
+      "- Terminologi / faglig tetthet (gj.snitt): " +
+        stats.avg_terminology.toFixed(2)
+    );
+  }
+
+  if (stats.logical_patterns) {
+    const lp = stats.logical_patterns;
+    const c = (lp.causal || 0).toFixed(2);
+    const i = (lp.inferential || 0).toFixed(2);
+    const k = (lp.contrast || 0).toFixed(2);
+    const b = (lp.balancing || 0).toFixed(2);
+
+    log(
+      "- Logiske mønstre (gj.snitt per innsikt): " +
+        "årsak " +
+        c +
+        ", resonnement " +
+        i +
+        ", kontrast " +
+        k +
+        ", balansering " +
+        b
+    );
+  }
+
+  if (stats.meta_concepts) {
+    const mc = stats.meta_concepts;
+    const unique = mc.unique_count || 0;
+    const topList = (mc.top || [])
+      .slice(0, 5)
+      .map((m) => m.key + "×" + m.count)
+      .join(", ");
+
+    log(
+      "- Meta-begreper: " +
+        unique +
+        " unike" +
+        (topList ? " (topp: " + topList + ")" : "")
+    );
+  }
 }
 
 // ── Syntese / sti / semantikk / auto-artefakt ─────────
