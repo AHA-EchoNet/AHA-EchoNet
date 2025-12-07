@@ -2,67 +2,435 @@
   {
     "emne_id": "em_pop_symboler_og_masseoppmerksomhet",
     "subject_id": "populaerkultur",
+
+    "area_id": "pop_masse",
+    "area_label": "Symboler, masseoppmerksomhet og mainstream",
+    "level": 2,
+
     "title": "Symboler og masseoppmerksomhet",
     "short_label": "Masseoppmerksomhet",
-    "description": "Hvordan serier, filmer, spill, memes og ikoner organiserer hva som føles aktuelt, relevant og sitérbart i samtiden.",
+    "description": "Hvordan serier, filmer, spill, memes og ikoner organiserer hva som føles aktuelt, relevant og siterbart i samtiden – og hvordan oppmerksomhet styres, kanaliseres og forsvinner.",
+
     "keywords": [
       "symboler",
       "memes",
       "ikoner",
       "trender",
-      "massekultur"
+      "massekultur",
+      "mainstream",
+      "viralt",
+      "hype",
+      "fandom",
+      "franchises"
     ],
+
     "dimensions": [
       "medier",
       "psykologi",
-      "kultur"
+      "kultur",
+      "økonomi"
     ],
+
     "core_concepts": [
       "sirkulasjon",
-      "masse",
+      "massepublikum",
       "ikon",
-      "identitet",
+      "brand",
+      "franchise",
       "narrativ",
-      "medier",
+      "mem",
+      "referanse",
+      "innside-vits",
       "algoritme",
-      "trend"
+      "trend",
+      "trend-syklus",
+      "oppmerksomhetsøkonomi",
+      "engasjement",
+      "klikk",
+      "virale formater",
+      "content-strøm",
+      "meta-humor",
+      "nostalgi",
+      "remix-kultur"
     ],
+
     "blindspots": [
-      "politisk kraft forkledd som bare underholdning",
-      "algoritmers styring av hva som blir synlig",
-      "økonomiens logikk bak hype og virale øyeblikk"
+      "politisk kraft forkledd som 'bare underholdning'",
+      "algoritmers styring av hva som blir synlig og usynlig",
+      "økonomiens logikk bak hype og virale øyeblikk",
+      "kulturell dominans fra noen få plattformer og produksjonsmiljøer",
+      "språk- og kulturkretsløp som aldri blir globale, bare lokale"
     ],
+
+    "methods": [
+      "Kartlegg hvilke serier, filmer, spill og memes som sirkulerer i en bestemt gruppe.",
+      "Se etter hvilke uttrykk som blir sitert igjen og igjen i hverdagsspråk.",
+      "Analyser hvordan ett ikon (figur, logo, karakter) brukes på tvers av plattformer.",
+      "Spør hvem som tjener på at akkurat disse uttrykkene er overalt.",
+      "Følg et meme over tid: hvor oppsto det, hvordan endres det, når dør det ut?",
+      "Undersøk hvordan nostalgiske referanser brukes til å selge nye produkter."
+    ],
+
+    "analysis_axes": [
+      "mainstream vs nisje",
+      "ironisk vs oppriktig bruk",
+      "organisk sirkulasjon vs kjøpt rekkevidde",
+      "lokal meme-kultur vs global meme-kultur",
+      "kortvarig hype vs varige ikoner"
+    ],
+
+    "key_terms": [
+      "oppmerksomhetsøkonomi",
+      "viralt innhold",
+      "ikon",
+      "franchise",
+      "mem",
+      "trend-syklus",
+      "nostalgi-markedsføring"
+    ],
+
     "related_routes": [],
     "related_places": [],
     "related_quizzes": [],
     "status": "core"
   },
+
   {
     "emne_id": "em_pop_byen_som_scene",
     "subject_id": "populaerkultur",
+
+    "area_id": "pop_by",
+    "area_label": "Byen som scene og kulisse",
+    "level": 2,
+
     "title": "Byen som scene for populærkultur",
     "short_label": "Byen som scene",
-    "description": "Hvordan gater, bydeler, studioer og lokasjoner blir ikoniske gjennom TV, film, musikkvideoer og internettkultur.",
+    "description": "Hvordan gater, bydeler, studioer og lokasjoner blir ikoniske gjennom TV, film, musikkvideoer, spill og internettkultur – og hvordan det preger opplevelsen av byen.",
+
     "keywords": [
       "filmlokasjoner",
       "TV-studio",
       "klubbscener",
-      "ikoniske gatehjørner"
+      "ikoniske gatehjørner",
+      "musikkvideoer",
+      "serielokasjoner",
+      "turisme",
+      "street style"
     ],
+
     "dimensions": [
       "geografi",
       "medier",
-      "identitet"
+      "identitet",
+      "økonomi"
     ],
+
     "core_concepts": [
-      "ikon",
-      "narrativ",
-      "trend"
+      "ikonisk location",
+      "kultserier",
+      "filmby",
+      "serieturisme",
+      "klubbscener",
+      "subkulturelle soner",
+      "kulisser vs faktisk liv",
+      "bybranding",
+      "byens rykte",
+      "fan-pilgrimsreiser",
+      "Instagram-steder",
+      "estetiserte gatehjørner",
+      "sceneknytepunkter",
+      "backstage-arbeid"
     ],
+
     "blindspots": [
-      "hvem som aldri får plass i de store formatene",
-      "det usynlige arbeidet bak glatte flater (redaksjon, teknikk, moderering)"
+      "hvem som aldri får plass i de store formatene og produksjonene",
+      "det usynlige arbeidet bak glatte flater (redaksjon, teknikk, moderering, vask)",
+      "beboere som må leve i turiststrømmer og hype uten å ha bedt om det",
+      "bydeler som kun er synlige som stereotyp kulisse (rik/hip/farlig osv.)"
     ],
+
+    "methods": [
+      "Kartlegg hvilke steder i byen som er brukt i serier, filmer og musikkvideoer.",
+      "Se etter hvor fans tar bilder – og hvilke motiver som gjentas.",
+      "Analyser hvordan bydelen framstilles i fiksjon vs i nyheter.",
+      "Undersøk hvilke scener (klubber, studioer, små scener) som fungerer som popkulturelle knutepunkt.",
+      "Spør hvordan lokale opplever at området deres brukes som 'kulisse'."
+    ],
+
+    "analysis_axes": [
+      "by som reell hverdag vs by som kulisse",
+      "lokalbefolkningens perspektiv vs turistens perspektiv",
+      "subkulturell scene vs polert tv-bilde",
+      "autentisitet vs iscenesettelse"
+    ],
+
+    "key_terms": [
+      "ikonisk location",
+      "bybranding",
+      "fan-turisme",
+      "kulisse",
+      "subkulturell sone",
+      "Instagram-spot"
+    ],
+
+    "related_routes": [],
+    "related_places": [],
+    "related_quizzes": [],
+    "status": "core"
+  },
+
+  {
+    "emne_id": "em_pop_fandom_og_identitet",
+    "subject_id": "populaerkultur",
+
+    "area_id": "pop_fandom",
+    "area_label": "Fandom, fellesskap og identitet",
+    "level": 2,
+
+    "title": "Fandom, fellesskap og identitet",
+    "short_label": "Fandom & identitet",
+    "description": "Hvordan fans, fanfiksjon, fanart, konvensjoner og online-fellesskap skaper tilhørighet, språk og identitet gjennom populærkultur.",
+
+    "keywords": [
+      "fandom",
+      "fanart",
+      "fanfiction",
+      "konvensjoner",
+      "cosplay",
+      "community",
+      "stan-kultur"
+    ],
+
+    "dimensions": [
+      "identitet",
+      "kultur",
+      "psykologi",
+      "fellesskap"
+    ],
+
+    "core_concepts": [
+      "fan-fellesskap",
+      "tilhørighet",
+      "intern språkbruk",
+      "inside jokes",
+      "fanproduksjon",
+      "fanfiction",
+      "fanart",
+      "headcanon",
+      "shipping",
+      "konvensjoner",
+      "cosplay",
+      "stan-kultur",
+      "paratekster",
+      "fan-aktivisme",
+      "parasosiale relasjoner"
+    ],
+
+    "blindspots": [
+      "utmattelse, konflikt og toksisk adferd i enkelte fandoms",
+      "hvordan selskaper utnytter fanengasjement gratis",
+      "inkludering/ekskludering basert på kjønn, alder, språk, funksjonsevne",
+      "skillet mellom støtte og ukritisk dyrking"
+    ],
+
+    "methods": [
+      "Kartlegg hvilke univers folk rundt deg er fans av – og hva de gjør sammen.",
+      "Se etter hvordan språk og interne referanser skaper inn- og ut-grupper.",
+      "Analyser forskjellen mellom offisielt innhold og fanprodusert innhold.",
+      "Undersøk hvordan fandom kan være både trygg havn og konfliktarena.",
+      "Spør hva slags arbeid (tid, penger, kreativitet) fans faktisk legger ned."
+    ],
+
+    "analysis_axes": [
+      "tilhørighet vs ekskludering",
+      "kritisk fandom vs ukritisk dyrking",
+      "fan-styrt kultur vs industri-styrt kultur",
+      "lek vs arbeid (gratisarbeid for brands)"
+    ],
+
+    "key_terms": [
+      "fandom",
+      "fanfiction",
+      "fanart",
+      "stan-kultur",
+      "parasosial relasjon",
+      "headcanon",
+      "shipping"
+    ],
+
+    "related_routes": [],
+    "related_places": [],
+    "related_quizzes": [],
+    "status": "core"
+  },
+
+  {
+    "emne_id": "em_pop_influencere_og_creator_okonomi",
+    "subject_id": "populaerkultur",
+
+    "area_id": "pop_creator",
+    "area_label": "Influencere, creator-økonomi og selvbranding",
+    "level": 2,
+
+    "title": "Influencere og creator-økonomi",
+    "short_label": "Influencere & creator",
+    "description": "Hvordan influencere, streamere, podcastere og andre 'creators' lever av oppmerksomhet, personlig merkevare og spons, og hvordan dette former hverdagskultur og unge menneskers framtidsdrømmer.",
+
+    "keywords": [
+      "influencer",
+      "creator-økonomi",
+      "streaming",
+      "YouTube",
+      "TikTok",
+      "spons",
+      "reklame",
+      "brand deals",
+      "selvbranding"
+    ],
+
+    "dimensions": [
+      "økonomi",
+      "identitet",
+      "arbeidsliv",
+      "medier"
+    ],
+
+    "core_concepts": [
+      "personlig merkevare",
+      "selvpresentasjon",
+      "mikrokjendiser",
+      "sponsede innlegg",
+      "anbefalingsøkonomi",
+      "affiliatelenker",
+      "plattformavhengighet",
+      "algoritmisk usikkerhet",
+      "kontentproduksjon som arbeid",
+      "synlighetspress",
+      "publisitet som valuta",
+      "performativ intimitet",
+      "parasosial økonomi"
+    ],
+
+    "blindspots": [
+      "økonomisk og psykisk sårbarhet når inntekten er algoritme-styrt",
+      "uklar grense mellom ekte anbefaling og reklame",
+      "barn og unge som målgruppe og arbeidskraft",
+      "skjult arbeid (planlegging, klipping, moderering) bak korte klipp"
+    ],
+
+    "methods": [
+      "Analyser en influencer-kanal: hva er innhold, og hva er egentlig reklame?",
+      "Kartlegg hvor mye arbeid som ligger bak en typisk video/episode.",
+      "Undersøk hvordan influencere snakker om mental helse og press.",
+      "Se på hvilke idealer om kropp, suksess og penger som formidles.",
+      "Spør hvordan følgerne deltar – passivt, kommenterende, skapende."
+    ],
+
+    "analysis_axes": [
+      "autentisitet vs iscenesettelse",
+      "innhold vs reklame",
+      "livsstil vs produktplassering",
+      "frihet vs plattformavhengighet",
+      "kreativ utfoldelse vs konstant produksjonspress"
+    ],
+
+    "key_terms": [
+      "creator-økonomi",
+      "personlig merkevare",
+      "spons",
+      "affiliatelenker",
+      "parasosial økonomi",
+      "synlighetspress"
+    ],
+
+    "related_routes": [],
+    "related_places": [],
+    "related_quizzes": [],
+    "status": "core"
+  },
+
+  {
+    "emne_id": "em_pop_plattformer_algoritmer_viralitet",
+    "subject_id": "populaerkultur",
+
+    "area_id": "pop_plattform",
+    "area_label": "Plattformer, algoritmer og viralitet",
+    "level": 2,
+
+    "title": "Plattformlogikk, algoritmer og viralitet",
+    "short_label": "Plattformer & algoritmer",
+    "description": "Hvordan sosiale medier, streamingtjenester og anbefalingssystemer bestemmer hva som blir sett, hørt og delt – og hvordan dette former populærkulturens landskap.",
+
+    "keywords": [
+      "algoritmer",
+      "anbefalingssystemer",
+      "feed",
+      "plattformer",
+      "TikTok",
+      "Instagram",
+      "YouTube",
+      "Spotify",
+      "Netflix"
+    ],
+
+    "dimensions": [
+      "teknologi",
+      "økonomi",
+      "kultur",
+      "makt"
+    ],
+
+    "core_concepts": [
+      "algoritmisk kuratering",
+      "anbefalingssystemer",
+      "filterbobler",
+      "engasjementsoptimalisering",
+      "watchtime",
+      "scroll-design",
+      "autoplay",
+      "plattformsiloer",
+      "data som valuta",
+      "brukerprofilering",
+      "trendanalyse",
+      "shadowbanning",
+      "deplatforming",
+      "innholdsmoderering",
+      "plattformmakt"
+    ],
+
+    "blindspots": [
+      "hvordan algoritmer reproduserer eksisterende fordommer og skjevheter",
+      "hvordan innhold som ikke skaper raskt engasjement forsvinner ut av feeden",
+      "manglende innsyn i hvordan innhold prioriteres eller straffes",
+      "avhengighetsskapende design presentert som nøytral teknologi"
+    ],
+
+    "methods": [
+      "Observer din egen feed over noen dager: hva forsterkes, hva forsvinner?",
+      "Lag to ulike profiler og se hvordan anbefalingene divergerer.",
+      "Analyser hvordan autoplay og shorts/reels påvirker tidsbruk.",
+      "Spør hvilke typer innhold som aldri dukker opp – og hvorfor.",
+      "Undersøk hvordan plattformer snakker om sine algoritmer offentlig."
+    ],
+
+    "analysis_axes": [
+      "brukerkontroll vs plattformkontroll",
+      "kvalitet vs klikk",
+      "langsiktig verdi vs kortsiktig dopamin",
+      "mangfold vs homogenisering",
+      "menneskelig kuratering vs maskinell kuratering"
+    ],
+
+    "key_terms": [
+      "algoritmisk kuratering",
+      "filterbobler",
+      "watchtime",
+      "engasjementsoptimalisering",
+      "shadowbanning",
+      "deplatforming",
+      "plattformmakt"
+    ],
+
     "related_routes": [],
     "related_places": [],
     "related_quizzes": [],
