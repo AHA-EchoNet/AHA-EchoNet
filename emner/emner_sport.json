@@ -2,70 +2,401 @@
   {
     "emne_id": "em_sport_kropp_konkurranse",
     "subject_id": "sport",
+
+    "area_id": "sport_kropp",
+    "area_label": "Kropp, konkurranse og prestasjon",
+    "level": 2,
+
     "title": "Kropp, konkurranse og ritual",
     "short_label": "Kropp & konkurranse",
-    "description": "Hvordan regler, trening, disiplin og konkurranse former kroppen og skaper felles ritualer rundt prestasjon og kamp.",
+    "description": "Hvordan regler, trening, disiplin og konkurranse former kroppen, skaper ritualer, og bygger fellesskap rundt prestasjon, kamp og mestring.",
+
     "keywords": [
       "kropp",
       "konkurranse",
       "ritual",
       "prestasjon",
-      "fair play"
+      "fair play",
+      "trening",
+      "taktikk",
+      "disiplin",
+      "kampånd"
     ],
+
     "dimensions": [
       "kropp",
       "kultur",
-      "psykologi"
+      "psykologi",
+      "fellesskap"
     ],
+
     "core_concepts": [
-      "kropp",
-      "energi",
+      "kroppskontroll",
       "prestasjon",
+      "utholdenhet",
+      "styrke",
+      "teknikk",
+      "taktikk",
       "ritual",
+      "lagånd",
       "regler",
-      "fellesskap",
-      "statistikk",
-      "symbolikk"
+      "sportsånd",
+      "symbolikk",
+      "konkurranse",
+      "flow",
+      "treningsregime",
+      "restitusjon",
+      "skadeforebygging",
+      "kampberedskap",
+      "idrettspsykologi",
+      "målsetting",
+      "prestasjonspress",
+      "tilskuereffekt"
     ],
+
     "blindspots": [
-      "kroppspress, skader og utslitthet",
-      "økonomiske strukturer og korrupsjon",
-      "kjønn, klasse og ulik tilgang"
+      "kroppspress og mental helse",
+      "skader, smerte og utbrenthet som normaliseres",
+      "økonomiske maktstrukturer og korrupsjon",
+      "kjønn, klasse og ulik tilgang til idrett",
+      "usynliggjøring av trenerens og støtteapparatets arbeid"
     ],
-    "related_routes": [],
-    "related_places": [],
-    "related_quizzes": [],
+
+    "methods": [
+      "Se etter hvilke ritualer utøvere gjør før kamp eller konkurranse.",
+      "Analyser taktiske valg underveis i en kamp.",
+      "Kartlegg hvordan kroppsspråk endrer seg i mestring vs press.",
+      "Spør hvordan tilskuere skaper energi og stress.",
+      "Studer hvordan regler påvirker tempo og stil i sporten."
+    ],
+
+    "analysis_axes": [
+      "lek vs konkurranse",
+      "kroppslig glede vs kroppspress",
+      "teknikk vs rå fysikk",
+      "individprestasjon vs lagprestasjon",
+      "rekreasjon vs profesjonalisering"
+    ],
+
+    "key_terms": [
+      "idrettspsykologi",
+      "prestasjonspress",
+      "kampberedskap",
+      "sportsånd",
+      "ritualer",
+      "taktisk struktur"
+    ],
+
     "status": "core"
   },
+
   {
     "emne_id": "em_sport_idrettsgeografi",
     "subject_id": "sport",
+
+    "area_id": "sport_geografi",
+    "area_label": "Idrettens steder og infrastruktur",
+    "level": 2,
+
     "title": "Idrettens geografi i byen",
     "short_label": "Idrettsgeografi",
-    "description": "Hvordan baner, stadioner, haller og uformelle lekeplasser skaper et kart av idrettsøyeblikk og hverdagsidrett.",
+    "description": "Hvordan baner, stadioner, haller, stier og uformelle lekeplasser skaper et kart av idrettsøyeblikk og hverdagsaktiviteter – og hvordan idrett knytter folk til steder.",
+
     "keywords": [
       "arenaer",
       "baner",
       "klubber",
-      "hverdagsidrett"
+      "hverdagsidrett",
+      "idrettsanlegg",
+      "tribuner",
+      "løpebaner",
+      "gymsaler"
     ],
+
     "dimensions": [
       "geografi",
       "fellesskap",
-      "historie"
+      "historie",
+      "kultur"
     ],
+
     "core_concepts": [
       "fellesskap",
       "symbolikk",
-      "ritual"
+      "ritual",
+      "tribunekultur",
+      "hjemmebane",
+      "bortebane",
+      "idrettsanlegg",
+      "uformelle møteplasser",
+      "banekultur",
+      "lokal identitet",
+      "treningssoner",
+      "hverdagsmosjon",
+      "idrettslig landskap"
     ],
+
     "blindspots": [
-      "usynlig arbeid bak prestasjon (frivillige, foreldre)",
-      "hvem som ikke får tilgang til anlegg og utstyr"
+      "usynlig arbeid bak prestasjon (frivillige, foreldre, vedlikehold)",
+      "hvem som ikke får tilgang til anlegg og utstyr",
+      "hvordan anlegg bygges i områder med ulik sosial kapital",
+      "underrepresenterte idretter som ikke får plass"
     ],
-    "related_routes": [],
-    "related_places": [],
-    "related_quizzes": [],
+
+    "methods": [
+      "Kartlegg hvilke idrettssteder som finnes i en bydel.",
+      "Se hvordan ulike grupper bruker samme anlegg på ulike tider.",
+      "Analyser hva som gjør et sted til 'hjemmebane'.",
+      "Studer hvordan stier og parker muliggjør uformell idrett.",
+      "Sammenlign anlegg i rike vs mindre ressurssterke områder."
+    ],
+
+    "analysis_axes": [
+      "offisielle anlegg vs uformelle steder",
+      "organisert idrett vs egenorganisert aktivitet",
+      "elitebaner vs nærmiljøarenaer",
+      "identitet vs infrastruktur"
+    ],
+
+    "key_terms": [
+      "idrettsanlegg",
+      "hjemmebane",
+      "tribunekultur",
+      "hverdagsidrett",
+      "fellesskap"
+    ],
+
+    "status": "core"
+  },
+
+  {
+    "emne_id": "em_sport_helse_trening_og_livsstil",
+    "subject_id": "sport",
+
+    "area_id": "sport_helse",
+    "area_label": "Helse, trening og livsstil",
+    "level": 2,
+
+    "title": "Trening, helse og livsstil",
+    "short_label": "Helse & trening",
+    "description": "Hvordan idrett, trening og mosjon påvirker fysisk og mental helse, selvbilde, rytmer i hverdagen og moderne livsstilskultur.",
+
+    "keywords": [
+      "helse",
+      "mosjon",
+      "trening",
+      "kondisjon",
+      "styrke",
+      "livsstil",
+      "gymkultur"
+    ],
+
+    "dimensions": [
+      "kropp",
+      "psykologi",
+      "kultur"
+    ],
+
+    "core_concepts": [
+      "helse",
+      "livsstilskultur",
+      "selvbilde",
+      "kroppsidealer",
+      "styrketrening",
+      "kondisjonstrening",
+      "motivasjon",
+      "vanedannelse",
+      "trening som ritual",
+      "tracking",
+      "pulssoner",
+      "helsemyter",
+      "fallgruver i treningskultur"
+    ],
+
+    "blindspots": [
+      "treningsavhengighet og overtrening",
+      "giftig positivitet og prestasjonskultur",
+      "kommersielle dietter og kvakksalvertrender",
+      "ulik tilgang til treningskultur basert på økonomi og kjønn"
+    ],
+
+    "methods": [
+      "Kartlegg dine egne treningsvaner og hva som styrer dem.",
+      "Se etter hvilke idealer som henger i treningssenteret.",
+      "Undersøk hvordan teknologi (klokker, apper) påvirker motivasjonen.",
+      "Analyser hva som regnes som en 'god' kropp i ulike miljøer.",
+      "Vurder hvordan trening brukes som identitetsmarkør."
+    ],
+
+    "analysis_axes": [
+      "helse vs prestasjon",
+      "indre motivasjon vs ytre press",
+      "fellesskapstrening vs individuell trening",
+      "naturlig kropp vs idealisert kropp"
+    ],
+
+    "key_terms": [
+      "treningskultur",
+      "tracking",
+      "pulssoner",
+      "kroppsidealer",
+      "overtrening"
+    ],
+
+    "status": "core"
+  },
+
+  {
+    "emne_id": "em_sport_okonomi_marked_mediering",
+    "subject_id": "sport",
+
+    "area_id": "sport_okonomi",
+    "area_label": "Sportens økonomi, mediering og makt",
+    "level": 2,
+
+    "title": "Sportens økonomi og mediekultur",
+    "short_label": "Økonomi & mediering",
+    "description": "Hvordan sponsing, TV-avtaler, agentnettverk, sosiale medier og kommersielle strukturer bestemmer hva som blir synlig, hvem som lykkes, og hvordan sport iscenesettes.",
+
+    "keywords": [
+      "sponsing",
+      "TV-avtaler",
+      "rettigheter",
+      "agentnettverk",
+      "merkevarer",
+      "sportsjournalistikk",
+      "idrettspolitikk"
+    ],
+
+    "dimensions": [
+      "økonomi",
+      "medier",
+      "makt",
+      "kultur"
+    ],
+
+    "core_concepts": [
+      "medialisering",
+      "rettighetsavtaler",
+      "sportswashing",
+      "korrupsjon",
+      "agentnettverk",
+      "sponsorkontrakter",
+      "kommersialisering",
+      "merkevarebygging",
+      "publikumsøkonomi",
+      "forventningspress",
+      "idrettsprestisje",
+      "ligastrukturer",
+      "pengestrømmer i sport"
+    ],
+
+    "blindspots": [
+      "arbeiderklassens rolle i sportsproduksjon (supportere, frivillige)",
+      "sportswashing av autoritære regimer",
+      "ungdom som pressmiddel i talentutvikling",
+      "uvanlig høy lønnsforskjell mellom kjønnsdelte idretter"
+    ],
+
+    "methods": [
+      "Analyser en stor sportsbegivenhet: hvem tjener penger og hvordan?",
+      "Se etter kommersielle logikker bak TV-kamper.",
+      "Kartlegg sponsorer og hvilke verdier de vil kobles til.",
+      "Vurder hvordan kommentatorer og medier former fortellingen om kampene.",
+      "Undersøk hvordan pengestrømmer påvirker regler og ligastruktur."
+    ],
+
+    "analysis_axes": [
+      "sport som kultur vs sport som business",
+      "synlighet vs usynlighet",
+      "nasjonal prestisje vs kommersielle krefter",
+      "sportsjournalistikk vs reklame"
+    ],
+
+    "key_terms": [
+      "kommersialisering",
+      "sportswashing",
+      "rettighetsavtaler",
+      "sportsøkonomi",
+      "medialisering"
+    ],
+
+    "status": "core"
+  },
+
+  {
+    "emne_id": "em_sport_fans_fellesskap_subkultur",
+    "subject_id": "sport",
+
+    "area_id": "sport_fans",
+    "area_label": "Fans, fellesskap og supporter-kultur",
+    "level": 2,
+
+    "title": "Supporterkultur og fellesskap",
+    "short_label": "Supportere & fellesskap",
+    "description": "Hvordan supporterscener, ritualer, sanger, tribunepraksiser, symboler og lojalitet skaper identitet og fellesskap – og noen ganger konflikt.",
+
+    "keywords": [
+      "supportere",
+      "tribunekultur",
+      "supportersanger",
+      "ultras",
+      "lojalitet",
+      "identitet"
+    ],
+
+    "dimensions": [
+      "kultur",
+      "identitet",
+      "ritual",
+      "sosialpsykologi"
+    ],
+
+    "core_concepts": [
+      "tribunekultur",
+      "chants og ritualer",
+      "lojalitet",
+      "identitetsmarkører",
+      "symbolbruk",
+      "ultras-kultur",
+      "familietribuner vs harde kjerner",
+      "emosjonell investering",
+      "gruppetilhørighet",
+      "supporterpsykologi",
+      "fotball som religion",
+      "kampmotivasjon fra tribunen"
+    ],
+
+    "blindspots": [
+      "vold, hat og konflikt i ekstreme supportergrupper",
+      "kommersiell utnyttelse av supporterlojalitet",
+      "underrepresenterte grupper i supporterkulturen",
+      "hvordan klubber manipulerer supportere med narrativer"
+    ],
+
+    "methods": [
+      "Analyser sangene og symbolene en supportergruppe bruker.",
+      "Observer tribuneatferd gjennom en hel kamp.",
+      "Kartlegg hvilke ritualer som gjentas før og etter kamp.",
+      "Se etter forskjeller mellom familietribuner og ultras-soner.",
+      "Spør hva som skaper sterkest følelse av tilhørighet."
+    ],
+
+    "analysis_axes": [
+      "lojalitet vs kritikk",
+      "inkludering vs ekskludering",
+      "fellesskap vs konflikt",
+      "kulturuttrykk vs voldelig uttrykk"
+    ],
+
+    "key_terms": [
+      "tribunekultur",
+      "ultras",
+      "supporterpraksis",
+      "fanritual",
+      "identitetsmarkør"
+    ],
+
     "status": "core"
   }
 ]
