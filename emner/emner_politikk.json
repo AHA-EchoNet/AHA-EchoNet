@@ -2,68 +2,285 @@
   {
     "emne_id": "em_pol_makt_institusjoner",
     "subject_id": "politikk",
+
+    "area_id": "pol_makt",
+    "area_label": "Makt, institusjoner og styring",
+    "level": 2,
+
     "title": "Makt og institusjoner i byen",
     "short_label": "Makt & institusjoner",
-    "description": "Hvordan rådhus, departementer, domstoler og forvaltning former hverdagsliv, ressursfordeling og opplevelsen av hva som er normalt.",
+    "description": "Hvordan rådhus, departementer, domstoler, direktorater, tilsyn og lokal forvaltning former hverdagsliv, ressursfordeling og opplevelsen av hva som er normalt og legitimt.",
+
     "keywords": [
       "makt",
+      "politikk",
       "institusjoner",
       "forvaltning",
+      "rådhus",
+      "departement",
+      "direktorat",
+      "domstol",
+      "byråkrati",
       "demokrati",
-      "rettferdighet"
+      "vedtak",
+      "regler",
+      "lover",
+      "rettferdighet",
+      "offentlig sektor",
+      "offentlige tjenester",
+      "myndigheter",
+      "tillit",
+      "legitimitet"
     ],
+
     "dimensions": [
       "politikk",
       "institusjoner",
-      "hverdagsliv"
+      "hverdagsliv",
+      "rettferdighet",
+      "tillit",
+      "konflikt"
     ],
+
     "core_concepts": [
       "makt",
       "institusjon",
-      "normalitet",
       "styring",
-      "fordeling",
+      "forvaltning",
+      "lovverk",
+      "regelverk",
+      "byråkrati",
+      "myndighetsutøvelse",
+      "normalitet",
       "legitimitet",
-      "konflikt"
+      "rettferdighet",
+      "fordeling",
+      "interesser",
+      "konflikt",
+      "kompromiss",
+      "representasjon",
+      "demokratisk deltakelse",
+      "offentlighet",
+      "kontrollorganer",
+      "tilsyn",
+      "domstolskontroll",
+      "rettssikkerhet",
+      "rettsstat",
+      "velferdsstat",
+      "teknokratisk styring",
+      "administrativ makt",
+      "politisk ledelse",
+      "forvaltningsnivåer",
+      "kommunalt selvstyre",
+      "staten",
+      "kommunen",
+      "fylkeskommune",
+      "interessegrupper",
+      "lobbyisme",
+      "høringsprosesser",
+      "innbyggerdialog",
+      "klageordninger",
+      "strukturreformer",
+      "institusjonell endring"
     ],
+
     "blindspots": [
-      "administrativ makt og teknokratisk styring",
-      "strukturell vold og stille utestengelser",
-      "minoritetenes usynliggjøring"
+      "administrativ makt og teknokratisk styring som ikke oppleves som politikk, men som likevel former livene til folk",
+      "strukturell vold og stille utestengelser gjennom regler, praksis og rutiner som ser nøytrale ut",
+      "hvordan minoriteter, lavinntektsgrupper og marginaliserte miljøer usynliggjøres i institusjonelle prosesser",
+      "makt i møte med offentlige kontorer, utredninger og skjemaer som ikke kalles politikk",
+      "hvilke stemmer som ikke inviteres inn i høringer, utvalg og brukermedvirkning",
+      "hvordan digitalisering av forvaltning skaper nye barrierer for noen grupper"
     ],
+
+    "methods": [
+      "Kartlegg hvilke politiske og forvaltningsmessige institusjoner som finnes i byen – rådhus, domstoler, NAV-kontor, tilsyn, direktorater – og hvor de ligger.",
+      "Se etter hvordan regler, søknadsordninger og skjemaer påvirker hvem som faktisk får tilgang til rettigheter og ytelser.",
+      "Undersøk hvilke beslutninger som tas politisk (i folkevalgte organer) og hvilke som tas administrativt av byråkrater.",
+      "Analyser hvordan konflikter mellom grupper behandles i institusjonene: som enkeltsaker, som systemfeil eller som noe man ikke snakker om.",
+      "Spør hvem som har lett for å ta kontakt med det offentlige – og hvem som vegrer seg eller gir opp.",
+      "Studer hvordan institusjonene kommuniserer utad: språk, symboler, bygninger og ritualer som signaliserer makt, tilgjengelighet eller avstand.",
+      "Se etter hvilke kontrollmekanismer som finnes (tilsyn, klageordninger, ombud), og om folk opplever dem som reelle.",
+      "Sammenlign formell likhet i lovverket med faktisk likhet i møte med systemet: hvem faller gjennom sprekkene.",
+      "Spør hvordan hverdagslivserfaringer med NAV, skole, politi, barnevern, domstoler og helsevesen påvirker tilliten til institusjonene."
+    ],
+
+    "analysis_axes": [
+      "formell makt vs opplevd makt",
+      "politisk ledelse vs administrativ styring",
+      "likhet i loven vs ulikhet i praksis",
+      "åpenhet vs uoversiktlighet",
+      "rettssikkerhet vs vilkårlighet",
+      "tillit vs mistillit",
+      "innflytelse for ressurssterke vs innflytelse for ressurssvake",
+      "demokratisk deltakelse vs politisk apati",
+      "institusjonelle rutiner vs enkeltmenneskers situasjon",
+      "synlig politikk (valg, debatt) vs usynlig politikk (budsjettrutiner, prioriteringer)"
+    ],
+
+    "key_terms": [
+      "offentlig forvaltning",
+      "forvaltningsnivåer",
+      "myndighetsutøvelse",
+      "rettssikkerhet",
+      "rettsstat",
+      "velferdsstat",
+      "offentlig tjenesteyting",
+      "byråkrati",
+      "teknokrati",
+      "kontrollorgan",
+      "ombud",
+      "tilsyn",
+      "forskrift",
+      "vedtak",
+      "klageadgang",
+      "demokratisk legitimitet",
+      "representativt demokrati",
+      "medvirkning",
+      "offentlighet",
+      "høringsprosess",
+      "interessepolitikk",
+      "strukturreform"
+    ],
+
     "related_routes": [],
     "related_places": [],
     "related_quizzes": [],
     "status": "core"
   },
+
   {
     "emne_id": "em_pol_geografi_sosial_struktur",
     "subject_id": "politikk",
+
+    "area_id": "pol_geografi",
+    "area_label": "Samfunnsgeografi, fordeling og ulikhet",
+    "level": 2,
+
     "title": "Samfunnets geografi og sosiale struktur",
     "short_label": "Samfunnsgeografi",
-    "description": "Hvordan politiske beslutninger fordeler makt, ressurser og institusjoner i byen, og hvordan sentrum–periferi og bydeler preges av dette.",
+    "description": "Hvordan politiske beslutninger, planlegging og økonomi fordeler makt, ressurser, tjenester og institusjoner mellom bydeler og grupper, og hvordan sentrum–periferi, boligmarked og sosiale skiller formes og forsterkes over tid.",
+
     "keywords": [
       "bydeler",
       "fordeling",
+      "ulikhet",
       "velferdsstat",
-      "konflikt",
-      "representasjon"
+      "sosial struktur",
+      "bomiljø",
+      "boligpriser",
+      "sosial boligbygging",
+      "segregasjon",
+      "gentrifisering",
+      "representasjon",
+      "sosial mobilitet",
+      "fattigdom",
+      "klasseskiller",
+      "ressursfordeling",
+      "tjenestetilbud"
     ],
+
     "dimensions": [
       "geografi",
       "fordeling",
-      "sosial struktur"
-    ],
-    "core_concepts": [
-      "fordeling",
-      "styring",
-      "legitimitet",
+      "sosial struktur",
+      "livssjanser",
+      "tilhørighet",
       "konflikt"
     ],
-    "blindspots": [
-      "politiske prosesser som ikke er demokratiske",
+
+    "core_concepts": [
+      "fordeling",
+      "ressurser",
+      "velferdsstat",
+      "tjenestetilbud",
+      "livssjanser",
+      "sosial mobilitet",
+      "sosial ulikhet",
+      "inntektsforskjeller",
+      "klassestruktur",
+      "arbeidsmarked",
+      "boligmarked",
+      "boligpolitikk",
+      "sosial boligbygging",
+      "segregasjon",
+      "gentrifisering",
+      "sosial dumping",
+      "marginalisering",
+      "utenforskap",
+      "sosial kontroll",
+      "nabolagseffekter",
+      "senter-periferi",
+      "by-land",
+      "bydelsskillet",
+      "tjenestestruktur",
+      "skolekvalitet",
+      "helsetilbud",
+      "kollektivtransport",
+      "infrastrukturforskjeller",
+      "representasjon",
+      "delvis demokrati",
+      "symbolsk makt",
       "normalitet som maktmiddel"
     ],
+
+    "blindspots": [
+      "politiske prosesser og økonomiske drivere som former byutvikling, men som ikke omtales som politikk",
+      "hvordan boligmarkedet og private aktører i praksis bestemmer hvem som kan bo hvor",
+      "erfaringene til folk som bor i områder med dårligere tjenester og lavere status, men som sjelden deltar i beslutningsprosesser",
+      "hvordan kart, statistikk og indikatorer kan glatte over erfaringer med stigma, skam og kontroll i enkelte bydeler",
+      "langsomme endringer (som gentrifisering) som ikke merkes fra år til år, men som endrer hvem som har råd til å bo i byen"
+    ],
+
+    "methods": [
+      "Se på kart over byen og marker hvor skoler, barnehager, helsestasjoner, kulturtilbud og kollektivknutepunkter ligger – og hvilke bydeler som har tettest tilbud.",
+      "Sammenlign boligpriser, inntektsnivå og levekårsstatistikk mellom ulike bydeler.",
+      "Spør hvilke grupper som typisk bor i hvilke områder, og hvordan det henger sammen med arbeid, inntekt, utdanning og innvandring.",
+      "Undersøk hvilke steder som beskrives som 'attraktive', 'utsatte', 'ressurssterke' eller 'problemområder' i media og politiske dokumenter.",
+      "Se etter hvilke investeringer og satsinger som gjøres hvor – byfornyelse, nye kollektivlinjer, kulturbygg, idrettsanlegg – og hvilke områder som stadig står i kø.",
+      "Studer hvordan lokalbefolkningen beskriver sin egen bydel, og om det skiller seg fra det offisielle bildet.",
+      "Analyser hvordan skolegrenser, opptaksområder og boligpolitikk påvirker hvem som møter hvem i hverdagen.",
+      "Spør hvilke muligheter unge har i ulike deler av byen – jobb, utdanning, fritid, møteplasser – og hvordan det former framtidsplaner.",
+      "Se etter hvordan politiske konflikter om bompenger, kollektivtrafikk, kommunesammenslåing eller velferdskutt slår ulikt ut geografisk."
+    ],
+
+    "analysis_axes": [
+      "rike bydeler vs fattige bydeler",
+      "sentrumsnære områder vs ytterkanter",
+      "høy tjenestetetthet vs lav tjenestetetthet",
+      "eierboliger vs leieboliger",
+      "inkluderende nabolag vs stigmatiserte nabolag",
+      "faktisk levekår vs omdømme",
+      "statlig/kommunal styring vs markedskrefter",
+      "kort sikt (prosjekter) vs lang sikt (strukturendringer)",
+      "formell lik rett til tjenester vs reell tilgang og bruk",
+      "planlagte satsinger vs historiske skjevheter"
+    ],
+
+    "key_terms": [
+      "levekår",
+      "sosial ulikhet",
+      "sosial mobilitet",
+      "klassestruktur",
+      "segregasjon",
+      "gentrifisering",
+      "sosial boligbygging",
+      "byfornyelse",
+      "utsatt bydel",
+      "ressurssterk bydel",
+      "boligpolitikk",
+      "infrastruktur",
+      "senter-periferi",
+      "velferdstjenester",
+      "målrettede satsinger",
+      "områdeløft",
+      "nabolagseffekt",
+      "fattigdom",
+      "utenforskap",
+      "sosial kontroll",
+      "symbolsk stempling"
+    ],
+
     "related_routes": [],
     "related_places": [],
     "related_quizzes": [],
