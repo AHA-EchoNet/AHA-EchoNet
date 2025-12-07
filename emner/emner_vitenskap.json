@@ -206,5 +206,644 @@
   "related_places": [],
   "related_quizzes": [],
   "status": "core"
+},
+
+  {
+  "emne_id": "em_vit_epistemologi",
+  "subject_id": "vitenskap",
+
+  "area_id": "vit_epistem",
+  "area_label": "Vitenskapens kunnskapsteori",
+  "level": 2,
+
+  "title": "Vitenskapelige tenkemåter og kunnskapsteori",
+  "short_label": "Epistemologi",
+  "description": "Hvordan vitenskap skaper, begrunner og utfordrer kunnskap – gjennom logikk, bevis, falsifikasjon, modeller, teoriutvikling og konkurrerende paradigmer.",
+
+  "keywords": [
+    "epistemologi",
+    "kunnskap",
+    "teori",
+    "forklaring",
+    "hypotese",
+    "falsifikasjon",
+    "paradigme",
+    "usikkerhet",
+    "kausalitet"
+  ],
+
+  "dimensions": [
+    "metode",
+    "tenkemåte",
+    "forklaring",
+    "usikkerhet"
+  ],
+
+  "core_concepts": [
+    "teori",
+    "modell",
+    "hypotese",
+    "forklaring",
+    "kausalitet",
+    "falsifikasjon",
+    "testbarhet",
+    "prediksjon",
+    "logisk konsistens",
+    "teoretisk ramme",
+    "paradigme",
+    "vitenskapelig revolusjon",
+    "anomali",
+    "empiri",
+    "observasjonsgrunnlag",
+    "forklaringskraft",
+    "teoretisk reduksjon",
+    "epistemiske dyder",
+    "konseptualisering",
+    "begrepsarbeid"
+  ],
+
+  "blindspots": [
+    "teorier kan bli så etablerte at de oppleves som naturlover",
+    "det som ikke passer inn i eksisterende rammer filtreres bort",
+    "modeller kan feiltolkes som virkeligheten selv",
+    "språk og begreper bestemmer hva vi kan se"
+  ],
+
+  "methods": [
+    "Spør hvilke antakelser som ligger bak en teori eller forklaring.",
+    "Se etter hva som ville falsifisere en teori.",
+    "Undersøk hvordan nye data utfordrer etablerte modeller.",
+    "Kartlegg hvordan ulike fag forklarer samme fenomen forskjellig.",
+    "Analyser hvilke begreper som må være på plass for at forskningen gir mening."
+  ],
+
+  "analysis_axes": [
+    "teori vs empiri",
+    "forklaring vs beskrivelse",
+    "falsifikasjon vs bekreftelse",
+    "anomali vs paradigme",
+    "prediksjon vs fortolkning",
+    "kompleksitet vs reduksjon"
+  ],
+
+  "key_terms": [
+    "epistemologi",
+    "kunnskapsgrunnlag",
+    "testbarhet",
+    "falsifikasjon",
+    "anomali",
+    "paradigmeskifte",
+    "teori",
+    "modell",
+    "konseptualisering",
+    "rammeverk"
+  ],
+
+  "status": "core"
+},
+  {
+  "emne_id": "em_vit_forskningspraksis",
+  "subject_id": "vitenskap",
+
+  "area_id": "vit_praksis",
+  "area_label": "Forskningspraksiser",
+  "level": 2,
+
+  "title": "Forskningspraksiser og metodiske tradisjoner",
+  "short_label": "Forskningspraksis",
+  "description": "Hvordan forskning faktisk utføres: eksperimenter, feltarbeid, datainnsamling, kliniske studier, observasjoner, simuleringer og laboratoriepraksiser.",
+
+  "keywords": [
+    "eksperiment",
+    "feltarbeid",
+    "datainnsamling",
+    "observasjon",
+    "kliniske studier",
+    "simulering",
+    "reproduksjon",
+    "måleutstyr"
+  ],
+
+  "dimensions": [
+    "metode",
+    "prosess",
+    "teknologi",
+    "praksis"
+  ],
+
+  "core_concepts": [
+    "eksperimentell design",
+    "kontrollgruppe",
+    "variabler",
+    "feltarbeid",
+    "intervju",
+    "observasjon",
+    "kliniske studier",
+    "randomisering",
+    "blinding",
+    "genteknikk",
+    "laboratorieprosedyrer",
+    "målefeil",
+    "datakvalitet",
+    "replikerbarhet",
+    "reliabilitet",
+    "validitet",
+    "dataprosessering",
+    "signal vs støy"
+  ],
+
+  "blindspots": [
+    "negative funn som ikke publiseres",
+    "bias i datainnsamling",
+    "laboratoriepraksiser som påvirker resultatet",
+    "etiske konflikter i kliniske studier"
+  ],
+
+  "methods": [
+    "Identifiser hvordan data faktisk ble samlet inn.",
+    "Se etter hva som ble målt – og hva som ikke ble målt.",
+    "Spør hvilke kontrollmekanismer som ble brukt.",
+    "Undersøk hvordan forskerne reduserte støy.",
+    "Analyser hvordan forskningsmiljøets kultur påvirket resultatene."
+  ],
+
+  "analysis_axes": [
+    "felt vs laboratorium",
+    "kontroll vs realisme",
+    "manuelt arbeid vs automatisering",
+    "kvalitativ vs kvantitativ metode",
+    "måling vs fortolkning"
+  ],
+
+  "key_terms": [
+    "kontrollgruppe",
+    "randomisering",
+    "feltarbeid",
+    "eksperimentdesign",
+    "klinisk studie",
+    "observasjon",
+    "replikerbarhet",
+    "metodebias"
+  ],
+
+  "status": "core"
+},
+  {
+  "emne_id": "em_vit_teknologi_systemer",
+  "subject_id": "vitenskap",
+
+  "area_id": "vit_tech",
+  "area_label": "Vitenskapelig teknologi og systemer",
+  "level": 2,
+
+  "title": "Vitenskapelig teknologi og instrumenter",
+  "short_label": "Teknologi & instrumenter",
+  "description": "Hvordan mikroskoper, satellitter, sensorer, superdatamaskiner, laboratorieutstyr, algoritmer og simuleringssystemer gjør det mulig å produsere vitenskapelig kunnskap.",
+
+  "keywords": [
+    "instrumenter",
+    "sensorer",
+    "mikroskop",
+    "teleskop",
+    "maskinlæring",
+    "algoritmer",
+    "modellering",
+    "datasentre"
+  ],
+
+  "dimensions": [
+    "teknologi",
+    "måling",
+    "modellering",
+    "infrastruktur"
+  ],
+
+  "core_concepts": [
+    "sensorer",
+    "målesystemer",
+    "datastrømmer",
+    "modellering",
+    "simulering",
+    "superdatamaskiner",
+    "AI som forskningsverktøy",
+    "maskinlæring i vitenskap",
+    "automatisert datainnsamling",
+    "kalibrering av instrumenter",
+    "feilkilder",
+    "teknologisk bias",
+    "dataetikk",
+    "teknisk validering",
+    "oppdagelsesverktøy",
+    "materialanalyse",
+    "genetisk sekvensering"
+  ],
+
+  "blindspots": [
+    "teknologi bestemmer hva som kan observeres",
+    "algoritmer kan skape falske mønstre",
+    "datasett kan skjule skjevheter",
+    "investeringer styrer forskningsagendaen"
+  ],
+
+  "methods": [
+    "Kartlegg hvilket utstyr som brukes og hva det faktisk måler.",
+    "Spør hvilke teknologiske begrensninger som finnes.",
+    "Analyser hvilken rolle datainfrastruktur spiller for resultatene.",
+    "Se etter automatiserte steg som kan inneholde feil.",
+    "Undersøk forholdet mellom modell og virkelighet i tekniske systemer."
+  ],
+
+  "analysis_axes": [
+    "manuelt vs automatisert arbeid",
+    "modell vs observasjon",
+    "høy presisjon vs høy kompleksitet",
+    "menneskelig vurdering vs algoritmisk beslutning"
+  ],
+
+  "key_terms": [
+    "simulering",
+    "sensor",
+    "algoritme",
+    "maskinlæring",
+    "superdatamaskin",
+    "datainnsamling",
+    "teknisk bias",
+    "modelloppløsning"
+  ],
+
+  "status": "core"
+},
+  {
+  "emne_id": "em_vit_samfunnsrolle",
+  "subject_id": "vitenskap",
+
+  "area_id": "vit_samfunn",
+  "area_label": "Vitenskapens samfunnsrolle",
+  "level": 2,
+
+  "title": "Vitenskapens samfunnsrolle og autoritet",
+  "short_label": "Samfunnsrolle",
+  "description": "Hvordan vitenskap påvirker politikk, helse, økonomi og offentlig debatt – og hvordan eksperter får, mister eller utfordres på autoritet.",
+
+  "keywords": [
+    "eksperter",
+    "vitenskapskommunikasjon",
+    "offentlig debatt",
+    "autoritet",
+    "tillit",
+    "evidens"
+  ],
+
+  "dimensions": [
+    "samfunn",
+    "politikk",
+    "kommunikasjon",
+    "tillit"
+  ],
+
+  "core_concepts": [
+    "ekspertmakt",
+    "tillit",
+    "evidensbasert politikk",
+    "vitenskapskommunikasjon",
+    "kontroverser",
+    "vitenskapelige råd",
+    "etablert konsensus",
+    "faglig uenighet",
+    "risikovurdering",
+    "offentlig legitimitet",
+    "desinformasjon",
+    "epistemisk autoritet"
+  ],
+
+  "blindspots": [
+    "offentligheten ser ikke usikkerheten i forskningsprosesser",
+    "ekspertgrupper kan være skjevt sammensatt",
+    "vitenskap kan brukes til å legitimere politikk og makt",
+    "kommunikasjon kan overselge sikkerhet"
+  ],
+
+  "methods": [
+    "Analyser hvordan vitenskap presenteres i offentlig debatt.",
+    "Se etter hva som regnes som legitim kunnskap – og hva som avvises.",
+    "Studer hvem som regnes som eksperter i ulike situasjoner.",
+    "Spør hvordan forskningsresultater brukes i politiske beslutninger.",
+    "Kartlegg vitenskapskontroverser og hvilke verdier som ligger bak."
+  ],
+
+  "analysis_axes": [
+    "ekspertkunnskap vs lekfolkserfaring",
+    "åpen vitenskap vs lukket prosess",
+    "konsensus vs uenighet",
+    "tillit vs skepsis",
+    "kommunikasjon vs kompleksitet"
+  ],
+
+  "key_terms": [
+    "epistemisk tillit",
+    "ekspertpanel",
+    "vitenskapskommunikasjon",
+    "desinformasjon",
+    "legitimitet",
+    "faglig konsensus",
+    "kontrovers"
+  ],
+
+  "status": "core"
+},
+  {
+  "emne_id": "em_vit_biovitenskap_liv",
+  "subject_id": "vitenskap",
+
+  "area_id": "vit_bio",
+  "area_label": "Biovitenskap og livsprosesser",
+  "level": 2,
+
+  "title": "Biovitenskap og livsprosesser",
+  "short_label": "Biovitenskap",
+  "description": "Hvordan celler, organismer, økosystemer og evolusjon studeres gjennom eksperimenter, feltstudier, modeller og teknologi – og hvordan dette påvirker helse, naturforvaltning og forståelsen av liv.",
+
+  "keywords": [
+    "biologi",
+    "liv",
+    "celler",
+    "organismer",
+    "evolusjon",
+    "økosystem",
+    "genetikk",
+    "helse",
+    "natur"
+  ],
+
+  "dimensions": [
+    "natur",
+    "helse",
+    "økologi",
+    "metode"
+  ],
+
+  "core_concepts": [
+    "celle",
+    "organisme",
+    "art",
+    "populasjon",
+    "økosystem",
+    "næringskjede",
+    "evolusjon",
+    "naturlig seleksjon",
+    "genetisk variasjon",
+    "arvemateriale",
+    "DNA",
+    "genuttrykk",
+    "homeostase",
+    "tilpasning",
+    "livssyklus",
+    "bærekraft",
+    "resiliens",
+    "biologisk mangfold",
+    "økologisk balanse",
+    "forstyrrelse",
+    "inngrep",
+    "laboratoriemodell",
+    "dyreforsøk",
+    "feltstudie",
+    "bioteknologi",
+    "genredigering"
+  ],
+
+  "blindspots": [
+    "opplevelsesdimensjonen til levende vesener reduseres til systemer og mekanismer",
+    "økosystemer behandles som stabile, selv når de er i rask endring",
+    "mennesket ses som utenfor naturen, ikke som del av den",
+    "makt- og økonomipress i helsesektoren forsvinner bak 'medisinske fakta'",
+    "etiske konflikter rundt dyreforsøk og genetisk manipulering glattes over"
+  ],
+
+  "methods": [
+    "Kartlegg hvilke deler av naturen som blir målt, overvåket eller modellert – og hvilke som ikke blir det.",
+    "Se etter hvordan laboratoriemodeller oversettes til virkelige økosystemer eller menneskekropper.",
+    "Analyser hvordan data om helse, natur og liv presenteres som nøytral kunnskap.",
+    "Spør hvilke arter, sykdommer eller områder som får mest oppmerksomhet og forskningsmidler.",
+    "Undersøk hvordan biologisk kunnskap brukes til å begrunne politiske eller økonomiske valg."
+  ],
+
+  "analysis_axes": [
+    "laboratorium vs felt",
+    "enkeltorganisme vs økosystem",
+    "mekanistisk forklaring vs helhetlig forståelse",
+    "menneskesentrert perspektiv vs økosentrisk perspektiv",
+    "kontroll vs naturens egen dynamikk",
+    "kortsiktig effekt vs langsiktige konsekvenser"
+  ],
+
+  "key_terms": [
+    "økosystem",
+    "biologisk mangfold",
+    "resiliens",
+    "naturlig seleksjon",
+    "genetisk variasjon",
+    "bioteknologi",
+    "genredigering",
+    "laboratoriemodell",
+    "dyreforsøk",
+    "naturforvaltning"
+  ],
+
+  "status": "core"
+},
+  {
+  "emne_id": "em_vit_samfunnsvitenskap",
+  "subject_id": "vitenskap",
+
+  "area_id": "vit_samf",
+  "area_label": "Samfunnsvitenskapelige perspektiver",
+  "level": 2,
+
+  "title": "Samfunnsvitenskapelige perspektiver og metoder",
+  "short_label": "Samfunnsvitenskap",
+  "description": "Hvordan samfunn, institusjoner, grupper og hverdagsliv studeres gjennom kvalitative og kvantitative metoder, teori og begreper – og hvordan dette påvirker politikk, velferd og forståelsen av sosiale strukturer.",
+
+  "keywords": [
+    "samfunn",
+    "institusjoner",
+    "grupper",
+    "roller",
+    "normer",
+    "statistikk",
+    "intervju",
+    "feltarbeid",
+    "spørreundersøkelse"
+  ],
+
+  "dimensions": [
+    "samfunn",
+    "makt",
+    "normer",
+    "metode"
+  ],
+
+  "core_concepts": [
+    "rolle",
+    "norm",
+    "institusjon",
+    "struktur",
+    "sosial klasse",
+    "kjønn",
+    "makt",
+    "myndighet",
+    "tillit",
+    "kulturell kapital",
+    "symbolsk makt",
+    "sosialt felt",
+    "kollektivitet",
+    "individ",
+    "forskningsdesign",
+    "kvalitativ metode",
+    "kvantitativ metode",
+    "case-studie",
+    "spørreundersøkelse",
+    "feltarbeid",
+    "intervju",
+    "observasjon",
+    "representativitet",
+    "statistisk usikkerhet",
+    "korrelasjon",
+    "årsaksforklaring"
+  ],
+
+  "blindspots": [
+    "dagligspråklige oppfatninger av 'samfunnet' tas for gitt",
+    "kvantitative data kan skjule individuelle erfaringer og urettferdighet",
+    "kvalitative funn kan generaliseres for langt",
+    "forskerens egen posisjon og privilegier blir ofte underkommunisert",
+    "språk og begreper brukes som om de er nøytrale, selv om de bærer verdier"
+  ],
+
+  "methods": [
+    "Spør hvem som er med i datagrunnlaget, og hvem som ikke er det.",
+    "Se etter hvilke begreper som brukes til å beskrive grupper – og hva de skjuler.",
+    "Analyser hvordan statistikk oversettes til politiske konklusjoner.",
+    "Undersøk hvordan kvalitative funn presenteres som 'typiske historier'.",
+    "Kartlegg hvordan forskerens plassering påvirker hva som blir sett og ikke sett."
+  ],
+
+  "analysis_axes": [
+    "individ vs struktur",
+    "kvalitativ vs kvantitativ",
+    "beskrivelse vs normativ vurdering",
+    "minoritetsperspektiv vs majoritetsperspektiv",
+    "hverdagsliv vs institusjonelt nivå",
+    "tall vs fortelling"
+  ],
+
+  "key_terms": [
+    "sosial struktur",
+    "institusjon",
+    "kvalitativ forskning",
+    "kvantitativ forskning",
+    "representativitet",
+    "statistisk signifikans",
+    "feltarbeid",
+    "intervjumateriale",
+    "tolkning",
+    "bias"
+  ],
+
+  "status": "core"
+},
+  {
+  "emne_id": "em_vit_hist_teknologi",
+  "subject_id": "vitenskap",
+
+  "area_id": "vit_hist",
+  "area_label": "Vitenskapshistorie og teknologiutvikling",
+  "level": 2,
+
+  "title": "Vitenskapshistorie og teknologiske skift",
+  "short_label": "Vitenskapshistorie",
+  "description": "Hvordan vitenskapelige ideer, metoder og teknologier har utviklet seg over tid, gjennom oppdagelser, konflikter, feilspor og store paradigmeskifter – og hvordan dette har formet hverdagsliv og samfunn.",
+
+  "keywords": [
+    "vitenskapshistorie",
+    "oppdagelser",
+    "paradigmeskifte",
+    "teknologisk utvikling",
+    "industriell revolusjon",
+    "digitalisering",
+    "medisin",
+    "energi"
+  ],
+
+  "dimensions": [
+    "historie",
+    "teknologi",
+    "samfunn",
+    "makt"
+  ],
+
+  "core_concepts": [
+    "paradigmeskifte",
+    "vitenskapelig revolusjon",
+    "oppdagelse",
+    "feilteori",
+    "kontrovers",
+    "industriell revolusjon",
+    "elektrifisering",
+    "masseproduksjon",
+    "digitalisering",
+    "automatisering",
+    "teknologisk framskritt",
+    "teknologisk risiko",
+    "patenter",
+    "forskning og utvikling (FoU)",
+    "militær forskning",
+    "medisinske gjennombrudd",
+    "epidemier og medisin",
+    "energisystemer",
+    "fossil energi",
+    "fornybar energi",
+    "storprosjekter",
+    "teknologisk determinisme",
+    "sosial konstruksjon av teknologi"
+  ],
+
+  "blindspots": [
+    "historien fortelles ofte som en lineær suksesshistorie, ikke som konflikt og feil",
+    "tapere i teknologiske skift (arbeidere, regioner, yrker) blir usynlige",
+    "koloniale og globale dimensjoner i vitenskapshistorie tones ned",
+    "militære og kommersielle drivere for forskning underkommuniseres",
+    "kunnskap utenfor den vestlige tradisjonen marginaliseres"
+  ],
+
+  "methods": [
+    "Se etter hvilke historier som regnes som 'store gjennombrudd' – og hvilke som aldri nevnes.",
+    "Analyser hvem som framstår som helter og hvem som mangler navn.",
+    "Spør hvilke sosiale og økonomiske interesser som ble styrket av et teknologisk skift.",
+    "Kartlegg hvilke feilspor og mislykkede prosjekter som ble viktige læringsarenaer.",
+    "Undersøk hvordan hverdagslivet endrer seg når ny teknologi introduseres."
+  ],
+
+  "analysis_axes": [
+    "fremskritt vs kostnader",
+    "vinnere vs tapere",
+    "lokale konsekvenser vs globale effekter",
+    "offisiell vitenskapshistorie vs alternative fortellinger",
+    "teknologi som frigjøring vs teknologi som kontroll"
+  ],
+
+  "key_terms": [
+    "vitenskapelig revolusjon",
+    "paradigmeskifte",
+    "industriell revolusjon",
+    "digitalisering",
+    "automatisering",
+    "teknologisk determinisme",
+    "FoU",
+    "patentsystem",
+    "energiovergang",
+    "sosial konsekvens"
+  ],
+
+  "status": "core"
 }
 ]
