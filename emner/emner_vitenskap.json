@@ -38,35 +38,173 @@
     "related_quizzes": [],
     "status": "core"
   },
-  {
-    "emne_id": "em_vit_byen_som_kunnskapskart",
-    "subject_id": "vitenskap",
-    "title": "Byen som kunnskapskart",
-    "short_label": "Kunnskapskart",
-    "description": "Laboratorier, universitet, observatorier og teknologibygg som viser hvor vitenskapelige gjennombrudd og paradigmeskifter fant sted.",
-    "keywords": [
-      "laboratorier",
-      "universitet",
-      "observatorium",
-      "teknologibygg"
-    ],
-    "dimensions": [
-      "geografi",
-      "historie",
-      "institusjoner"
-    ],
-    "core_concepts": [
-      "paradigme",
-      "standardisering",
-      "institusjon"
-    ],
-    "blindspots": [
-      "institusjonell makt og hierarkier",
-      "politikk og prioritering av forskningsmidler"
-    ],
-    "related_routes": [],
-    "related_places": [],
-    "related_quizzes": [],
-    "status": "core"
-  }
+
+{
+  "emne_id": "em_vit_byen_som_kunnskapskart",
+  "subject_id": "vitenskap",
+
+  "area_id": "vit_arena",
+  "area_label": "Vitenskapens steder og institusjoner",
+  "level": 2,
+
+  "title": "Byen som kunnskapskart",
+  "short_label": "Kunnskapskart",
+  "description": "Hvordan laboratorier, universiteter, arkiver, teknologibygg, forskningsparker og andre institusjoner er fordelt i byen, og hvordan denne fordelingen former hvem som deltar i kunnskapsproduksjon, får tilgang til ekspertise og påvirkes av vitenskapelige miljøer.",
+
+  "keywords": [
+    "laboratorier",
+    "universitet",
+    "høyskole",
+    "observatorium",
+    "teknologibygg",
+    "campus",
+    "forskningspark",
+    "innovasjonsdistrikt",
+    "kunnskapsklynge",
+    "universitetssykehus",
+    "arkiv",
+    "fagbibliotek",
+    "forskningsinstitutt",
+    "akademiske miljøer",
+    "forskningsmiljø",
+    "kunnskapsby",
+    "vitenskapsby",
+    "forskningsinfrastruktur",
+    "kunnskapsøkonomi",
+    "byutvikling"
+  ],
+
+  "dimensions": [
+    "geografi",
+    "historie",
+    "institusjoner",
+    "makt",
+    "tilgang",
+    "økonomi"
+  ],
+
+  "core_concepts": [
+    "forskningsinfrastruktur",
+    "campus",
+    "kunnskapsklynge",
+    "innovasjonsklynge",
+    "universitet",
+    "høyskole",
+    "forskning",
+    "forskningspark",
+    "forskningsinstitutt",
+    "universitetssykehus",
+    "fagbibliotek",
+    "arkiv",
+    "laboratorium",
+    "feltstasjon",
+    "observatorium",
+    "akademiske miljøer",
+    "ekspertmiljøer",
+    "kunnskapsmiljø",
+    "kunnskapsøkonomi",
+    "kompetansearbeidsplasser",
+    "byutvikling",
+    "senter-periferi",
+    "akademisk hierarki",
+    "institusjonalisering",
+    "institusjonell makt",
+    "finansiering",
+    "forskningspolitikk",
+    "prioritering av forskningsmidler",
+    "kunnskapsakser",
+    "geografisk konsentrasjon",
+    "segregasjon",
+    "gentrifisering",
+    "tilgang til utdanning",
+    "tilgang til ekspertise",
+    "offentlig kunnskap",
+    "lukket ekspertise",
+    "kunnskapsrom",
+    "kunnskapskartlegging",
+    "nettverk",
+    "faglig tyngdepunkt",
+    "regionale forskningssentre",
+    "innovasjonssentre",
+    "kunnskapsdistrikt",
+    "smartby",
+    "science district",
+    "campusutbygging"
+  ],
+
+  "blindspots": [
+    "områder uten synlige kunnskapsinstitusjoner, men med viktig erfaringsbasert kunnskap",
+    "fagfelt og miljøer som ikke passer inn i etablerte institusjonsformer",
+    "grupper som ikke har økonomisk, sosial eller fysisk tilgang til campus og forskningsmiljøer",
+    "hvordan boligpriser og gentrifisering skyver folk vekk fra kunnskapsakser",
+    "hvordan lokalkunnskap og hverdagskunnskap undervurderes i forhold til akademisk ekspertise",
+    "midlertidige, uformelle og digitale kunnskapsarenaer som ikke synes i bykartet",
+    "historiske lag av kunnskapsinstitusjoner som er revet, flyttet eller privatisert",
+    "konflikter mellom byplanlegging, næringsinteresser og behovet for åpne kunnskapsrom",
+    "hvordan språk, kultur og minoritetsposisjon påvirker opplevd tilgang til kunnskapsinstitusjoner"
+  ],
+
+  "methods": [
+    "Kartlegg på et kart hvor laboratorier, universiteter, forskningsparker, arkiver og fagbibliotek ligger i byen.",
+    "Se etter hvilke bydeler som har høy tetthet av kunnskapsinstitusjoner, og hvilke som nesten ikke har noen.",
+    "Undersøk hvilke former for kunnskap hver type institusjon er spesialisert på, og hvordan de kompletterer eller konkurrerer med hverandre.",
+    "Spør hvem som har lett fysisk tilgang til disse institusjonene, og hvem som må reise langt eller ikke har økonomi til å være der.",
+    "Sammenlign hvordan ulike områder omtales i markedsføring og byplanlegging: som 'kunnskapspark', 'campus', 'innovasjonsdistrikt' eller noe helt annet.",
+    "Studer hvordan forsknings- og utdanningsinstitusjoner påvirker boligpriser, næringsliv og transportstruktur rundt seg.",
+    "Se etter hvilke fagfelt og miljøer som ikke har synlig plass i bybildet, selv om de er viktige for samfunnet.",
+    "Identifiser historiske kunnskapsbygg som har skiftet funksjon, og spør hva slags kunnskap som var sentral der før.",
+    "Analyser hvilke institusjoner som fungerer som maktsentre for ekspertise når det oppstår kriser eller store samfunnsdebatter.",
+    "Se etter uformelle kunnskapsarenaer i byen – makerspaces, frivillige møteplasser, biblioteker, åpne foredrag – og sammenlign dem med de formelle institusjonene.",
+    "Utforsk hvordan digital infrastruktur (nettundervisning, fjernlaboratorier, datasentre) endrer behovet for fysisk nærvær i kunnskapsbyene.",
+    "Spør hvordan byen ville sett ut på et kart hvis du bare tegnet inn steder der kunnskap skapes og deles."
+  ],
+
+  "analysis_axes": [
+    "senter vs periferi",
+    "eliteinstitusjoner vs hverdagsarenaer",
+    "offentlig kunnskap vs lukket ekspertise",
+    "lokal kunnskap vs global kunnskapsproduksjon",
+    "fysisk infrastruktur vs digital infrastruktur",
+    "formelle institusjoner vs uformelle kunnskapsrom",
+    "åpenhet vs eksklusivitet",
+    "gamle kunnskapsakser vs nye innovasjonskorridorer",
+    "akademisk hierarki vs tverrfaglige nettverk",
+    "kunnskapsdrevet byutvikling vs markedstyrt gentrifisering",
+    "erfaringsbasert kunnskap vs akkreditert ekspertise",
+    "sentralisering av kompetanse vs spredning av kunnskapsmiljøer"
+  ],
+
+  "key_terms": [
+    "forskningsinfrastruktur",
+    "campus",
+    "kunnskapsklynge",
+    "innovasjonsklynge",
+    "forskningspark",
+    "universitetssykehus",
+    "kunnskapsøkonomi",
+    "akademisk hierarki",
+    "ekspertmakt",
+    "byutvikling",
+    "gentrifisering",
+    "senter-periferi",
+    "tilgang",
+    "inkludering",
+    "kompetansearbeidsplasser",
+    "kunnskapsaksen",
+    "kunnskapsdistrikt",
+    "science city",
+    "innovation district",
+    "kunnskapsmiljø",
+    "forskningstunge sektorer",
+    "strategisk plassering",
+    "kunnskapsstrategi",
+    "smartby",
+    "regionalt tyngdepunkt"
+  ],
+
+  "related_routes": [],
+  "related_places": [],
+  "related_quizzes": [],
+  "status": "core"
+}
 ]
