@@ -2,70 +2,220 @@
   {
     "emne_id": "em_nat_økologi_grenser",
     "subject_id": "natur",
+
+    "area_id": "nat_økologi",
+    "area_label": "Økologi, kretsløp og planetære grenser",
+    "level": 2,
+
     "title": "Økologi, grenser og vippepunkt",
     "short_label": "Økologi & grenser",
-    "description": "Hvordan kretsløp, økosystemer, vippepunkt og sårbarhet setter materielle grenser for byutvikling og menneskelig aktivitet.",
+    "description": "Hvordan kretsløp, økosystemer, vippepunkt og sårbarhet setter materielle grenser for byutvikling og menneskelig aktivitet, og hvordan naturen reagerer på press, inngrep og forbruk.",
+
     "keywords": [
       "økosystem",
       "kretsløp",
       "vippepunkt",
       "sårbarhet",
-      "resiliens"
+      "resiliens",
+      "regenerasjon",
+      "forstyrrelse",
+      "klima",
+      "karbonkretsløp",
+      "næringskjede",
+      "biologisk mangfold",
+      "bærekraft",
+      "planetære grenser",
+      "ressursbruk",
+      "overforbruk"
     ],
+
     "dimensions": [
       "økologi",
       "klima",
-      "geologi"
+      "geologi",
+      "ressurser",
+      "tidsdybde"
     ],
+
     "core_concepts": [
       "økosystem",
       "kretsløp",
+      "vannkretsløp",
+      "karbonkretsløp",
+      "næringskjede",
+      "energiflyt",
       "sårbarhet",
       "resiliens",
       "regenerasjon",
       "forstyrrelse",
-      "vippepunkt"
+      "vippepunkt",
+      "feedbacksløyfer",
+      "bærekraft",
+      "økologisk fotavtrykk",
+      "planetære grenser",
+      "habitat",
+      "fragmentering",
+      "overbeskatning",
+      "forurensning",
+      "akkumulering",
+      "langsomt sammenbrudd",
+      "tålegrense",
+      "økologisk kollaps"
     ],
+
     "blindspots": [
-      "langsomme sammenbrudd som ikke merkes før det er for sent",
-      "mikroskopiske prosesser (jordliv, mikroplast, kjemi)",
-      "naturen som selvstendig aktør, ikke bare ressurs"
+      "langsomme sammenbrudd som ikke merkes før vippepunkt er passert",
+      "mikroskopiske prosesser (jordliv, mikroplast, kjemi) som er usynlige i hverdagen",
+      "naturen som selvstendig aktør, ikke bare ressurs for mennesker",
+      "fremtidige generasjoner som ikke har stemme i dagens beslutninger",
+      "sammenhengen mellom globalt forbruk og lokale økologiske konsekvenser"
     ],
+
+    "methods": [
+      "Kartlegg hvilke kretsløp et område er en del av: vann, næringsstoffer, energi.",
+      "Se etter tegn på forstyrrelse: erosjon, avrenning, artsendringer, døde soner.",
+      "Undersøk hvor mange ledd i en næringskjede som finnes i et område – og hva som mangler.",
+      "Analyser hvordan klimaendringer påvirker lokale økosystemer over tid.",
+      "Spør hvilke former for forbruk og infrastruktur som legger press på naturen rundt byen.",
+      "Se etter hvilke arter og landskapstyper som er spesielt sårbare for små endringer.",
+      "Vurder om tiltakene i området er regenererende, bevarende eller utarmende."
+    ],
+
+    "analysis_axes": [
+      "stabilitet vs sårbarhet",
+      "lokale inngrep vs globale konsekvenser",
+      "korttidseffekt vs langtidskonsekvens",
+      "naturens egen rytme vs menneskelig tempo",
+      "regenerasjon vs utarming",
+      "synlige miljøproblemer vs skjulte prosesser",
+      "enkeltart-fokus vs økosystem-fokus"
+    ],
+
+    "key_terms": [
+      "økosystem",
+      "resiliens",
+      "planetære grenser",
+      "bærekraft",
+      "økologisk fotavtrykk",
+      "vippepunkt",
+      "forstyrrelse",
+      "regenerasjon",
+      "overbeskatning",
+      "habitatfragmentering",
+      "tålegrense",
+      "langsomt sammenbrudd"
+    ],
+
     "related_routes": [],
     "related_places": [],
     "related_quizzes": [],
     "status": "core"
   },
+
   {
     "emne_id": "em_nat_by_natur_møtepunkt",
     "subject_id": "natur",
+
+    "area_id": "nat_by",
+    "area_label": "Møte mellom natur og by",
+    "level": 2,
+
     "title": "Møte mellom natur og by",
     "short_label": "Natur & by",
-    "description": "Der dalfører, vassdrag, skog og kystlinje møter urbane strukturer, og hvordan dette former risiko, rekreasjon og byplanlegging.",
+    "description": "Der dalfører, vassdrag, skog, myr og kystlinje møter urbane strukturer – og hvordan dette former risiko, rekreasjon, økologi og byplanlegging.",
+
     "keywords": [
       "urban natur",
       "vassdrag",
       "skog",
+      "myr",
       "kyst",
-      "byutvikling"
+      "byutvikling",
+      "flomfare",
+      "skred",
+      "grøntstruktur",
+      "park",
+      "friluftsliv",
+      "turstier",
+      "byøkologi",
+      "blågrønne løsninger"
     ],
+
     "dimensions": [
       "geografi",
       "byøkologi",
-      "historie"
+      "historie",
+      "risiko",
+      "rekreasjon"
     ],
+
     "core_concepts": [
       "kretsløp",
       "forstyrrelse",
-      "biomakt"
+      "biomakt",
+      "urban natur",
+      "økologiske korridorer",
+      "grønnstruktur",
+      "blågrønn infrastruktur",
+      "flomsoner",
+      "skredfare",
+      "overvann",
+      "kanalisering",
+      "kantsoner",
+      "parklandskap",
+      "restnatur",
+      "rekreasjonspress",
+      "stier og slitasje",
+      "lysforurensning",
+      "støy",
+      "varmeøyeffekt",
+      "naturbaserte løsninger"
     ],
+
     "blindspots": [
-      "urban natur som økosystem, ikke dekor",
-      "økologisk kompleksitet som ikke lar seg redusere til tall"
+      "urban natur som dekor eller rekreasjon, ikke som fungerende økosystem",
+      "økologisk kompleksitet som ikke lar seg redusere til enkle tall og indikatorer",
+      "mangel på langsiktig planlegging for natur i møte med utbyggingspress",
+      "grupper som har dårligere tilgang til grøntområder og natur i byen",
+      "konflikter mellom friluftsliv, naturvern og utbygging som tones ned"
     ],
+
+    "methods": [
+      "Kartlegg hvor naturen faktisk trenger sammenhengende korridorer, og hvor byen bryter dem.",
+      "Se etter hvordan vann håndteres i byen: åpne bekker, rørlegging, flomsikring.",
+      "Undersøk hvem som bruker hvilke naturområder – og hvem som nesten aldri er der.",
+      "Analyser hvordan nye bygg, veier og parkeringsplasser påvirker naturkontakt og økologi.",
+      "Spør hvordan byplanleggingen tar hensyn til både rekreasjon, artsmangfold og risiko.",
+      "Se etter naturrestene som er igjen mellom bygg, veier og industri – og hvilken funksjon de har.",
+      "Vurder hvilke deler av byen som har lett tilgang til skog, vann og kyst – og hvilke som ikke har det."
+    ],
+
+    "analysis_axes": [
+      "natur som ressurs vs natur som egenverdi",
+      "rekreasjon vs økologisk funksjon",
+      "åpne vassdrag vs lukkede rør",
+      "kortvarig bruk vs langsiktig naturvern",
+      "byens behov vs naturens behov",
+      "lik tilgang til natur vs skjevfordelt tilgang",
+      "grønn pynt vs økologisk infrastruktur"
+    ],
+
+    "key_terms": [
+      "urban natur",
+      "byøkologi",
+      "blågrønn infrastruktur",
+      "flomsone",
+      "økologisk korridor",
+      "grønnstruktur",
+      "rekreasjonspress",
+      "varmeøyeffekt",
+      "lysforurensning",
+      "kantsoner"
+    ],
+
     "related_routes": [],
     "related_places": [],
     "related_quizzes": [],
     "status": "core"
   }
-]p
+]
