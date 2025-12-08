@@ -290,6 +290,129 @@
       .sort((a, b) => b.total_count - a.total_count);
   }
 
+    // ── Begrepsanalyse: POS-filter + multiword ──────────────
+
+  // Enkel heuristikk: "substantiv-ish" / fagbegreper
+  //  - vi beholder:
+  //      * ting som har klassiske norske fag-endelser
+  //      * 1-ordsbegreper med lengde >= 4
+  //  - vi filtrerer ut:
+  //      * åpenbart korte/lette ord
+  //      * setningsfragmenter med mange småord
+  function posFilterConcepts(conceptIndex) {
+    const keep = [];
+
+    (conceptIndex || []).forEach((c) => {
+      if (!c || !c.key) return;
+      const raw = String(c.key).trim();
+      if (!raw) return;
+
+      const key = raw.toLowerCase();
+
+      // dropp ekstremt korte "begreper"
+      if (key.length <= 3) return;
+
+      const parts = key.split(/\s+/).filter(Boolean);
+      const wordCount = parts.length;
+
+      // multiword lar vi slippe igjennom – de fanges også
+      // av multiword-funksjonen under
+      if (wordCount > 1 && wordCount <= 6) {
+        keep.push(c);
+        return;
+      }
+
+      // 1-ords: sjekk faglige endelser
+      const nominalSuffixes = [
+        "het",
+        "else",
+        "skap",
+        "sjon",
+        "asjon",
+        "ering",
+        "ologi",
+        "logi",
+        "dom",
+        "ning",
+        "isme",
+        "itet",
+      ];
+      const hasNominalSuffix = nominalSuffixes.some((suf) =>
+        key.endsWith(suf)
+      );
+
+      if (hasNominalSuffix) {
+        keep.push(c);
+        return;
+      }
+
+      // Hvis det er ett ord, >= 4 tegn og ikke åpenbart funksjonsord,
+      // behandler vi det som et mulig substantiv/fagord
+      const commonStop = [
+        "og",
+        "eller",
+        "men",
+        "for",
+        "til",
+        "fra",
+        "som",
+        "på",
+        "i",
+        "av",
+        "at",
+        "en",
+        "et",
+        "den",
+        "det",
+        "de",
+      ];
+
+      if (
+        wordCount === 1 &&
+        key.length >= 4 &&
+        !commonStop.includes(key)
+      ) {
+        keep.push(c);
+      }
+    });
+
+    // Sorter nedover på total_count hvis feltet finnes
+    return keep.slice().sort((a, b) => {
+      const ac = a.total_count || a.count || 0;
+      const bc = b.total_count || b.count || 0;
+      return bc - ac;
+    });
+  }
+
+  // Multiword-begreper: 2–4 ord, brukes til å plukke opp ting som
+  // "symbolsk orden", "kunnskapsregime", "politisk institusjon"
+  function extractMultiwordConcepts(conceptIndex, options) {
+    const opts = options || {};
+    const minWords = opts.minWords || 2;
+    const maxWords = opts.maxWords || 4;
+
+    const res = [];
+
+    (conceptIndex || []).forEach((c) => {
+      if (!c || !c.key) return;
+      const raw = String(c.key).trim();
+      if (!raw) return;
+
+      const parts = raw.split(/\s+/).filter(Boolean);
+      const n = parts.length;
+      if (n < minWords || n > maxWords) return;
+
+      // Dropp åpenbare setningsfragmenter som starter med småord
+      const first = parts[0].toLowerCase();
+      const badStarters = ["og", "eller", "men", "for", "som", "at"];
+      if (badStarters.includes(first)) return;
+
+      res.push(c);
+    });
+
+    return res;
+  }
+
   function buildConceptIndexForTheme(chamber, subjectId, themeId) {
     // 1) berik alle innsikter for denne brukeren med livssyklus
     const enriched = enrichInsightsWithLifecycle(chamber, subjectId);
@@ -657,7 +780,7 @@
       insights: enrichedInsights, // innsikter med lifecycle-status
       concepts: conceptIndex,     // global begrepsindeks
       buildAcademicProfile,           // 🔹 ny
-      buildAcademicProfileFromConcepts // (valgfri, men nyttig)
+      buildAcademicProfileFromConcepts, // (valgfri, men nyttig)
      };
 
   // ── Public API for meta-motoren ─────────────────────────
@@ -670,6 +793,9 @@
     computeInsightLifecycle,
     buildConceptIndex,
     buildConceptIndexForTheme,
+     // 🔹 nye begrepsverktøy
+    posFilterConcepts,
+    extractMultiwordCon,
   };
 
   if (typeof module !== "undefined" && module.exports) {
