@@ -917,44 +917,21 @@ function createInsightFromSignal(signal) {
   //  - lower-case
   //  - fjerner støy / tegn
   //  - fjerner noen vanlige norske endelser: -ene, -er, -en, -et, -a
-  function normalizeConceptToken(token) {
-    if (!token) return "";
+  function normalizeConceptToken(t) {
+  if (!t) return "";
 
-    // 1) lower-case + trim
-    let t = token.toLowerCase().trim();
+  // 1. Gjør om til små bokstaver
+  t = t.toLowerCase();
 
-    // 2) fjern enkel punktuasjon i kantene
-    t = t
-      .replace(/^[\s.,;:!?()[\]"'«»]+/, "")
-      .replace(/[\s.,;:!?()[\]"'«»]+$/, "");
+  // 2. Fjern tegnsetting i start/slutt
+  t = t.replace(/^[^a-zæøå]+|[^a-zæøå]+$/g, "");
 
-    // 3) fjern rare tegn inni (men behold æøå og tall)
-    t = t.replace(/[^a-zæøå0-9]/g, "");
+  // 3. Fjern interne tegn som splitter ord (men IKKE kutt ordet)
+  t = t.replace(/[^a-zæøå]/g, "");
 
-    // 4) veldig korte ting og bare tall er uinteressant som begrep
-    if (t.length <= 2) return "";
-    if (/^\d+$/.test(t)) return "";
-
-    // 5) enkel "stemming" for norsk-ish substantiv/verbformer
-
-    // flertall/bestemt flertall: -ene, -ende
-    if (t.length > 5 && /(ene|ende)$/i.test(t)) {
-      t = t.replace(/(ene|ende)$/i, "");
-    }
-    // kortere endelser: -ene, -er, -en, -et, -ane
-    else if (t.length > 4 && /(ene|er|en|et|ane)$/i.test(t)) {
-      t = t.replace(/(ene|er|en|et|ane)$/i, "");
-    }
-
-    // bestemt form på -a (jenta, boka) – grovt, men ofte nyttig
-    if (t.length > 4 && /a$/i.test(t)) {
-      t = t.slice(0, -1);
-    }
-
-    if (t.length <= 2) return "";
-
-    return t;
-  }
+  // 4. BEHOLD hele ordet – ikke gjør stemming eller truncation
+  return t;
+}
 
   // Tar inn tekst og returnerer en liste med konsepter:
 //  [{ key, count, examples: ["..."] }]
