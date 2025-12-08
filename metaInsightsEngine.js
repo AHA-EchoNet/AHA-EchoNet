@@ -302,6 +302,255 @@
       (c) => Array.isArray(c.themes) && c.themes.includes(themeId)
     );
   }
+
+    // ── Fagprofil / samfunnsvitenskapelige teoriklynger ─────
+
+  // Enkle "kanon"-klustere – juster/utvid som du vil.
+  // Tanken er: begreper i konseptindeksen → treff på disse nøkkelordene.
+  const THEORY_CLUSTERS = [
+    {
+      id: "marx",
+      label: "Marx / kritisk politisk økonomi",
+      family: "kritisk",
+      disciplines: ["sosiologi", "historie"],
+      weight: 1.2,
+      keywords: [
+        "klasse",
+        "klasser",
+        "klassestruktur",
+        "arbeiderklasse",
+        "kapitalisme",
+        "kapitalistisk",
+        "utbytting",
+        "utnytting",
+        "produksjonsmidler",
+        "produksjonsforhold",
+        "økonomisk struktur",
+        "ideologi",
+        "varefetisjisme",
+        "historisk materialisme"
+      ]
+    },
+    {
+      id: "weber",
+      label: "Weber / handling og rasjonalisering",
+      family: "fortolkende",
+      disciplines: ["sosiologi"],
+      weight: 1.0,
+      keywords: [
+        "rasjonalisering",
+        "byråkrati",
+        "myndighet",
+        "legitimitet",
+        "makt",
+        "verdierasjonell",
+        "formålsrasjonell",
+        "protestantisk etikk",
+        "idealtyper"
+      ]
+    },
+    {
+      id: "durkheim",
+      label: "Durkheim / sosial integrasjon",
+      family: "strukturfunksjonell",
+      disciplines: ["sosiologi"],
+      weight: 1.0,
+      keywords: [
+        "solidaritet",
+        "mekanisk solidaritet",
+        "organisk solidaritet",
+        "anomi",
+        "kollektiv bevissthet",
+        "sosiale fakta",
+        "selvmord"
+      ]
+    },
+    {
+      id: "foucault",
+      label: "Foucault / makt, diskurs, styringsregimer",
+      family: "poststrukturalistisk",
+      disciplines: ["sosiologi", "filosofi", "historie"],
+      weight: 1.3,
+      keywords: [
+        "diskurs",
+        "diskurser",
+        "makt",
+        "maktforhold",
+        "makt/kunskap",
+        "kunnskapsregime",
+        "regime",
+        "governmentality",
+        "styringsrasjonalitet",
+        "overvåkning",
+        "biomakt",
+        "normalisering",
+        "subjektivering",
+        "disiplinering",
+        "institusjoner"
+      ]
+    },
+    {
+      id: "bourdieu",
+      label: "Bourdieu / felt, habitus, kapital",
+      family: "praksisteori",
+      disciplines: ["sosiologi"],
+      weight: 1.3,
+      keywords: [
+        "felt",
+        "socialt felt",
+        "habitus",
+        "symbolsk orden",
+        "symbolsk vold",
+        "kapital",
+        "kulturell kapital",
+        "sosial kapital",
+        "økonomisk kapital",
+        "smak",
+        "doxa"
+      ]
+    },
+    {
+      id: "goffman",
+      label: "Goffman / interaksjonsritualer og roller",
+      family: "mikrososiologi",
+      disciplines: ["sosiologi", "psykologi"],
+      weight: 0.9,
+      keywords: [
+        "rolle",
+        "roller",
+        "fasade",
+        "frontstage",
+        "backstage",
+        "stigma",
+        "definisjon av situasjonen",
+        "ansikt",
+        "rammeanalyse"
+      ]
+    },
+    {
+      id: "habermas",
+      label: "Habermas / kommunikativ handling og offentlighet",
+      family: "kritisk teori",
+      disciplines: ["sosiologi", "filosofi"],
+      weight: 1.1,
+      keywords: [
+        "offentlighet",
+        "borgerlig offentlighet",
+        "kommunikativ handling",
+        "herredømmefri dialog",
+        "system",
+        "livsverden",
+        "kolonisering av livsverden"
+      ]
+    },
+    {
+      id: "chicago",
+      label: "Chicago / by, subkultur og hverdagsliv",
+      family: "empirisk",
+      disciplines: ["sosiologi"],
+      weight: 0.9,
+      keywords: [
+        "subkultur",
+        "byliv",
+        "nabolag",
+        "urban sosiologi",
+        "avvik",
+        "gategjeng",
+        "migrasjon",
+        "etnografi"
+      ]
+    }
+  ];
+
+  // Bygger en "fagprofil" fra en eksisterende konseptindeks
+  function buildAcademicProfileFromConcepts(conceptIndex) {
+    const clusters = THEORY_CLUSTERS.map((cluster) => ({
+      id: cluster.id,
+      label: cluster.label,
+      family: cluster.family || null,
+      disciplines: cluster.disciplines || [],
+      score: 0,
+      hits: []
+    }));
+
+    let totalConcepts = 0;
+
+    (conceptIndex || []).forEach((c) => {
+      const key = (c.key || "").toLowerCase();
+      const freq = c.total_count || c.count || 1;
+      if (!key) return;
+
+      totalConcepts += freq;
+
+      THEORY_CLUSTERS.forEach((cluster, idx) => {
+        const hit = cluster.keywords.some((kw) =>
+          key.includes(kw)
+        );
+        if (!hit) return;
+
+        const weight = cluster.weight || 1;
+        const bump = freq * weight;
+
+        clusters[idx].score += bump;
+
+        if (
+          clusters[idx].hits.length < 10 &&
+          !clusters[idx].hits.includes(key)
+        ) {
+          clusters[idx].hits.push(key);
+        }
+      });
+    });
+
+    const maxScore = clusters.reduce(
+      (m, c) => (c.score > m ? c.score : m),
+      0
+    );
+
+    const normalizedClusters = clusters
+      .map((c) => ({
+        ...c,
+        relative: maxScore > 0 ? c.score / maxScore : 0
+      }))
+      .sort((a, b) => b.score - a.score);
+
+    // Samle på tvers av fag (sosiologi, historie, filosofi, psykologi)
+    const disciplineMap = {};
+    normalizedClusters.forEach((c) => {
+      (c.disciplines || []).forEach((d) => {
+        if (!disciplineMap[d]) disciplineMap[d] = 0;
+        disciplineMap[d] += c.score;
+      });
+    });
+
+    const disciplineList = Object.keys(disciplineMap).map((d) => ({
+      id: d,
+      score: disciplineMap[d]
+    }));
+    const maxDisc = disciplineList.reduce(
+      (m, d) => (d.score > m ? d.score : m),
+      0
+    );
+
+    const disciplines = disciplineList
+      .map((d) => ({
+        ...d,
+        relative: maxDisc > 0 ? d.score / maxDisc : 0
+      }))
+      .sort((a, b) => b.score - a.score);
+
+    return {
+      total_concepts: totalConcepts,
+      clusters: normalizedClusters,
+      disciplines
+    };
+  }
+
+  // Hovedinngang for fagprofilen: tar enrichedInsights, gjenbruker conceptIndex
+  function buildAcademicProfile(enrichedInsights) {
+    const conceptIndex = buildConceptIndex(enrichedInsights || []);
+    return buildAcademicProfileFromConcepts(conceptIndex);
+  }
   
   // ── Semiotisk profil på tvers av innsikter ──────────────
 
@@ -388,15 +637,16 @@
       globalProfile
     );
 
-    // Berik innsikter med lifecycle-status
+        // Berik innsikter med lifecycle-status
     const enrichedInsights = enrichInsightsWithLifecycle(
       chamber,
       subjectId
     );
 
-    // Globalt begrepskart og semiotisk profil
+    // Globalt begrepskart, semiotikk og fagprofil
     const conceptIndex = buildConceptIndex(enrichedInsights);
     const semioticProfile = buildSemioticProfile(enrichedInsights);
+    const academicProfile = buildAcademicProfile(enrichedInsights);
 
     return {
       subject_id: subjectId,
@@ -406,8 +656,9 @@
       patterns,
       insights: enrichedInsights, // innsikter med lifecycle-status
       concepts: conceptIndex,     // global begrepsindeks
-    };
-  }
+      buildAcademicProfile,           // 🔹 ny
+      buildAcademicProfileFromConcepts // (valgfri, men nyttig)
+     };
 
   // ── Public API for meta-motoren ─────────────────────────
 
