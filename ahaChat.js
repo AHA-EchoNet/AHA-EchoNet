@@ -2004,6 +2004,11 @@ function setupUI() {
   if (btnAI) {
     btnAI.addEventListener("click", callAHAAgentForCurrentTopic);
   }
+
+  if (btnConcepts) {
+  btnConcepts.addEventListener("click", showConceptsForCurrentTopic);
+}
+  
   if (btnImportHG) {
     btnImportHG.addEventListener("click", importHistoryGoDataFromSharedStorage);
   }
