@@ -1998,16 +1998,16 @@ function setupUI() {
   btnExport.addEventListener("click", exportChamberJson);
   btnNarr.addEventListener("click", showNarrativeForCurrentTopic);
 
+if (btnConcepts) {
+  btnConcepts.addEventListener("click", showConceptsForCurrentTopic);
+}
+  
   if (btnMeta) {
     btnMeta.addEventListener("click", showMetaProfileForUser);
   }
   if (btnAI) {
     btnAI.addEventListener("click", callAHAAgentForCurrentTopic);
   }
-
-  if (btnConcepts) {
-  btnConcepts.addEventListener("click", showConceptsForCurrentTopic);
-}
   
   if (btnImportHG) {
     btnImportHG.addEventListener("click", importHistoryGoDataFromSharedStorage);
