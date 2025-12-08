@@ -2161,6 +2161,7 @@ function getConceptsForTheme(chamber, subjectId, themeId) {
     computeSemanticCounts,
     computeDimensionsSummary,
     createPathSteps,
+    createConceptPathForConcept,
     createSynthesisText,
     createArticleDraft,
     computeTopicsOverview,
