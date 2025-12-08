@@ -290,6 +290,19 @@
       .sort((a, b) => b.total_count - a.total_count);
   }
 
+  function buildConceptIndexForTheme(chamber, subjectId, themeId) {
+    // 1) berik alle innsikter for denne brukeren med livssyklus
+    const enriched = enrichInsightsWithLifecycle(chamber, subjectId);
+
+    // 2) bygg globalt begrepsindex
+    const allConcepts = buildConceptIndex(enriched);
+
+    // 3) filtrer ned til det temaet vi bryr oss om
+    return allConcepts.filter(
+      (c) => Array.isArray(c.themes) && c.themes.includes(themeId)
+    );
+  }
+  
   // ── Semiotisk profil på tvers av innsikter ──────────────
 
   function buildSemioticProfile(enrichedInsights) {
@@ -405,6 +418,7 @@
     enrichInsightsWithLifecycle,
     computeInsightLifecycle,
     buildConceptIndex,
+    buildConceptIndexForTheme,
   };
 
   if (typeof module !== "undefined" && module.exports) {
