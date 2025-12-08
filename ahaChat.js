@@ -185,6 +185,21 @@ function buildAIStateForTheme(themeId) {
     fieldProfile = HG_FIELD_PROFILES[fieldId] || null;
   }
 
+  // Begrepsindex per tema (fra MetaInsightsEngine)
+  let conceptsForTheme = [];
+  if (typeof MetaInsightsEngine !== "undefined" &&
+      typeof MetaInsightsEngine.buildConceptIndexForTheme === "function") {
+    try {
+      conceptsForTheme = MetaInsightsEngine.buildConceptIndexForTheme(
+        chamber,
+        SUBJECT_ID,
+        themeId
+      );
+    } catch (e) {
+      console.warn("Kunne ikke bygge begrepsindex for tema", e);
+    }
+  }
+  
   return {
     // 🔹 beholdt fra gammel versjon
     user_id: SUBJECT_ID,
@@ -204,7 +219,9 @@ function buildAIStateForTheme(themeId) {
     semantic_summary: sem,    // alias til topic_semantics
     dimensions_summary: dims, // alias til topic_dimensions
     narrative_summary: narrative // alias til topic_narrative
-  };
+    // 🔹 NYTT: konseptlag for dette temaet
+    concepts: conceptsForTheme
+    };
 }
 
 
