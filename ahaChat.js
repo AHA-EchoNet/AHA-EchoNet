@@ -169,6 +169,23 @@ function buildAIStateForTheme(themeId) {
     }
   }
 
+let conceptsForTheme = [];
+  if (
+    typeof MetaInsightsEngine !== "undefined" &&
+    typeof MetaInsightsEngine.buildConceptIndexForTheme === "function"
+  ) {
+    try {
+      conceptsForTheme = MetaInsightsEngine.buildConceptIndexForTheme(
+        chamber,
+        SUBJECT_ID,
+        themeId
+      );
+    } catch (e) {
+      console.warn("Kunne ikke bygge begrepsindex for tema", e);
+    }
+  }
+
+  
   const topInsights = (insights || [])
     .slice()
     .sort(
