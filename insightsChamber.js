@@ -944,40 +944,48 @@ function extractConcepts(text) {
   const conceptMap = new Map();
 
   for (let token of rawTokens) {
-    // 1. normaliser token først
-    let key = normalizeConceptToken(token);
-    if (!key) continue;
+    // NORMALISER FØR ALT ANNET
+    let norm = normalizeConceptToken(token);
 
-    // 2. filter etter normalisering (IKKE før!)
-    if (STOPWORDS.has(key)) continue;
-    if (key.length <= 3) continue;
-    if (!/^[a-zæøå]+$/.test(key)) continue;
+    if (!norm) continue;
 
-    // 3. Opprett entry
-    let entry = conceptMap.get(key);
+    // STOPWORDS MÅ HAMRE PÅ DEN NORMALISERTE VERSJONEN
+    if (STOPWORDS.has(norm)) continue;
+
+    // ord som “begrepet”, “snakket”, “diskuterte” → fjernes her:
+    if (norm.endsWith("et") && norm.length <= 8) continue; 
+    if (norm.endsWith("et") && norm.startsWith("begrep")) continue;
+
+    // min-lengde og rent innehold
+    if (norm.length <= 3) continue;
+    if (!/^[a-zæøå]+$/.test(norm)) continue;
+
+    // få eller oppdelt feil → fjern
+    if (norm === "else") continue;
+    if (norm === "eller") continue;
+
+    let entry = conceptMap.get(norm);
     if (!entry) {
-      entry = { key, count: 0, examples: [] };
-      conceptMap.set(key, entry);
+      entry = { key: norm, count: 0, examples: [] };
+      conceptMap.set(norm, entry);
     }
 
-    // 4. fag-boost
+    // Faglig boost
     if (
-      key.endsWith("het") ||
-      key.endsWith("else") ||
-      key.endsWith("skap") ||
-      key.endsWith("sjon") ||
-      key.endsWith("isering") ||
-      key.endsWith("ologi") ||
-      key.endsWith("dom") ||
-      key.endsWith("ning")
+      norm.endsWith("het") ||
+      norm.endsWith("else") ||
+      norm.endsWith("skap") ||
+      norm.endsWith("sjon") ||
+      norm.endsWith("ering") ||
+      norm.endsWith("ologi") ||
+      norm.endsWith("dom") ||
+      norm.endsWith("ning")
     ) {
       entry.count += 2;
     }
 
-    // 5. vanlig count
     entry.count += 1;
 
-    // 6. lagre noen få eksempler
     if (entry.examples.length < 5 && !entry.examples.includes(token)) {
       entry.examples.push(token);
     }
